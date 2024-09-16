@@ -214,8 +214,8 @@
                     </div>
                     <div class="thread_box_main border border-1 border-black">
                         <div class="thread_border_main">
-                            <div class="th_b_m1 px-2" style="background-color: #524298; color: white;">
-                                <label id="revLocalDateTime"></label>
+                            <div class="th_b_m1 px-2" style="background-color: #524298;">
+                                3:30 16/09/2024
                             </div>
                             <div class="th_b_m2 px-2">
                                 <div class="py-2">
@@ -319,7 +319,7 @@
                 trigger: 'click'
             });
         });
-        
+
         function showLocalDateTime() {
             const now = new Date();
 
@@ -330,12 +330,9 @@
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
 
-            const localDateTime = `${hours}:${minutes} ${year}/${month}/${day}`;
-
-            const revLocalDateTime = `${hours}:${minutes} ${year}/${month}/${day}`;
+            const localDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
             document.getElementById('localDateTime').textContent = localDateTime;
-            document.getElementById('revLocalDateTime').textContent = revLocalDateTime;
         }
 
         function toggleContent(event) {
