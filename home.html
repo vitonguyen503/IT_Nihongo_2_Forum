@@ -100,6 +100,22 @@
             background-color: #f1eeee;
         }
 
+        #content {
+            display: -webkit-box;
+            -webkit-line-clamp: 7; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: max-height 0.3s ease; 
+            max-height: 10.5em; 
+        }
+
+        #content.expanded {
+            -webkit-line-clamp: unset; 
+            max-height: none; 
+        }
+
+
+
         .btnLike {
             cursor: pointer;
             width: 150px; 
@@ -187,9 +203,19 @@
             <div class="thread_boder container">
                 <div class="thread_box px-2 py-2">
                     <div class="thread_box_header">
-                        <div class="th_b_h1">
-                            <div class="th_b_h1">
-                                <label class="fs-5 fw-medium"><a href="#">Thread</a> > <a href="#">Chính thức PHENIKAA công bố điểm chuẩn</a></label>
+                        <div class="th_b_h1 row">
+                            <div class="th_b_h1 col-sm-8">
+                                <div class="fs-5 fw-medium"><a href="#">Thread</a> > <a href="#">Chính thức PHENIKAA công bố điểm</a></div>
+                                <label>
+                                    <i class="bi bi-person-fill" style="font-size: 24px;"></i>
+                                    Nguyễn Văn Vinh
+                                </label>
+                                <label class="ms-3">
+                                    <svg style="width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
+                                    <label id="localDateTime"></label>
+                                </label>
+                            </div>    
+                            <div class="th_b_h2_nameUser col-sm-4">
                                 <div class="th_b_h1_right_btn" style="float: right;">
                                     <div class="btn bg-secondary text-light fw-bold me-3 btnLike" style="border-radius: 0;">
                                         <i class="bi bi-feather"></i>
@@ -200,22 +226,7 @@
                                         Follow
                                     </div>
                                 </div>
-                            </div>                                
-                            </div>
-                        </div>
-                        <div class="th_b_h2 mt-4 mb-4">
-                            <div class="th_b_h2_nameUser">
-                                <label>
-                                    <svg style="width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/>
-                                    </svg>
-                                    Nguyễn Văn Vinh
-                                </label>
-                                <label class="ms-3">
-                                    <svg style="width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
-                                    <label id="localDateTime"></label>
-                                </label>
-                                <div class="th_b_h2_btn d-flex btn-group" role="group" style="float: right;">
+                                <div class="th_b_h2_btn d-flex btn-group my-2" role="group" style="float: right;">
                                     <div class="btn btn-primary text-dark border border-3 border-black d-flex justify-content-center align-items-center" style="height: 30px; border-radius: 0;">
                                         Newest
                                     </div>
@@ -223,7 +234,7 @@
                                         Popular
                                     </div>    
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     <div class="thread_box_main border border-1 border-black">
@@ -250,23 +261,10 @@
                                     <P>
                                     CHÍNH THỨC PHENIKAA CÔNG BỐ ĐIỂM CHUẨN TRÚNG TUYỂN NĂM 2022 CÁC PHƯƠNG THỨC:
                                     </P>
-                                    <p>
-                                        Xét kết quả kỳ thi tốt nghiệp THPT năm 2022:
-                                        <br/>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.
-                                        <br />
-                                        <span id="short-content">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit...
-                                        </span>
-                                        <span id="full-content" style="display: none;">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.
-                                            <br/>
-                                        </span>
-                                        <br/>
-                                        ----------------------------------------------------------------
-                                        <br/>
-                                        <a href="#" id="read-more" onclick="toggleContent(event)">....Xem thêm</a>
+                                    <p id="content">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.
                                     </p>
+                                    <a href="#" id="read-more" onclick="toggleContent(event)">Xem thêm</a>
                                 </div>
                             </div>
                             <div class="th_b_m4 py-2 px-2">
@@ -354,20 +352,19 @@
 
         function toggleContent(event) {
             event.preventDefault();
-            var shortContent = document.getElementById('short-content');
-            var fullContent = document.getElementById('full-content');
+            var content = document.getElementById('content');
             var readMore = document.getElementById('read-more');
 
-            if (fullContent.style.display === 'none') {
-                fullContent.style.display = 'inline';
-                shortContent.style.display = 'none';
-                readMore.textContent = 'Thu gọn';
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                readMore.innerText = 'Xem thêm';
             } else {
-                fullContent.style.display = 'none';
-                shortContent.style.display = 'inline';
-                readMore.textContent = 'Xem thêm';
+                content.classList.add('expanded');
+                readMore.innerText = 'Thu gọn';
             }
         }
+
+
 
         function followedChange(event) {
             if (btnFollowed.classList.contains('bg-secondary')) {
