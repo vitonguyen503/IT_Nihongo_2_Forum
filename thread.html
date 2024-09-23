@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Thread Modal</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* The modal background */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow: auto;
+    }
+
+    /* Modal content box */
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.5s;
+    }
+
+    /* Close button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Fade-in effect */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    button {
+      font-size: 16px;
+      border-radius: 5px; /* Bo góc nút */
+      margin-right: 10px; /* Khoảng cách giữa các nút */
+      float: left; /* Đẩy nút sang bên trái */
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 18px;
+      margin-left: 5px;
+    }
+
+    .image-preview-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #imgPreview {
+      max-width: 100%;
+      height: auto;
+      display: none;
+      margin-bottom: 10px;
+    }
+
+    /* Confirmation and cancel buttons */
+    .confirmation-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-start; /* Đẩy các nút sang bên trái */
+    }
+
+    .confirmation-buttons button {
+      padding: 10px 20px; /* Tăng kích thước nút */
+      font-size: 18px; /* Tăng kích thước chữ */
+      margin-right: 10px; /* Khoảng cách giữa các nút */
+      border-radius: 5px; /* Bo góc nút */
+      border: none; /* Bỏ viền */
+      cursor: pointer; /* Con trỏ chuột khi hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Button to trigger the modal -->
+  <button id="createThreadBtn">Create Thread</button>
+
+  <!-- Modal content -->
+  <div id="createThreadModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Chủ đề mới</h2>
+      
+      <!-- Input for title -->
+      <input type="text" id="threadTitle" placeholder="Tiêu đề..." style="width: 96%; padding: 10px; margin-bottom: 10px;">
+      
+      <!-- Uploaded image preview -->
+      <div class="image-preview-container">
+        <img id="imgPreview">
+      </div>
+      
+      <!-- File upload input -->
+      <div style="margin-top: 10px; display: flex; align-items: center;">
+        <input type="file" id="fileUpload" accept="image/*" style="flex: 1; margin-right: 5px;">
+        <button id="deleteBtn" class="delete-btn" style="display: none;">&times;</button>
+      </div>
+      
+      <!-- Confirmation and cancel buttons -->
+      <div class="confirmation-buttons">
+        <button id="confirmBtn" style="background-color: #4CAF50; color: white;">Xác nhận</button>
+        <button id="cancelBtn" style="background-color: #f44336; color: white;">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get modal elements
+    var modal = document.getElementById("createThreadModal");
+    var createBtn = document.getElementById("createThreadBtn");
+    var closeBtn = document.getElementsByClassName("close")[0];
+    var confirmBtn = document.getElementById("confirmBtn");
+    var cancelBtn = document.getElementById("cancelBtn");
+    var fileInput = document.getElementById("fileUpload");
+    var imgPreview = document.getElementById("imgPreview");
+    var deleteBtn = document.getElementById("deleteBtn");
+
+    // Open the modal when "Create Thread" is clicked
+    createBtn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // Close the modal when the close button (X) is clicked
+    closeBtn.onclick = closeModal;
+
+    // Close the modal when cancel button is clicked
+    cancelBtn.onclick = closeModal;
+
+    // Close the modal if the user clicks outside the modal content
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+
+    // Handle file input change and display selected image
+    fileInput.onchange = function(event) {
+      var file = event.target.files[0];  // Get the selected file
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          imgPreview.src = e.target.result;  // Set the src of imgPreview to the file content
+          imgPreview.style.display = 'block';  // Show the image preview
+          deleteBtn.style.display = 'inline-block';  // Show the delete button
+        }
+
+        reader.readAsDataURL(file);  // Read the file as a data URL
+      }
+    }
+
+    // Handle deleting the image
+    deleteBtn.onclick = function() {
+      resetImagePreview();  // Reset image preview and file input
+    }
+
+    // Handle confirmation logic
+    confirmBtn.onclick = function() {
+      if (fileInput.value) {
+        alert("Chủ đề đã được tạo với ảnh!");
+      } else {
+        alert("Chủ đề đã được tạo mà không có ảnh!");
+      }
+      
+      closeModal();
+    }
+
+    // Function to reset image preview and hide delete button
+    function resetImagePreview() {
+      imgPreview.src = '';  // Clear the image source
+      imgPreview.style.display = 'none';  // Hide the image preview
+      deleteBtn.style.display = 'none';  // Hide the delete button
+      fileInput.value = '';  // Reset the file input
+    }
+
+    // Function to close modal
+    function closeModal() {
+      modal.style.display = "none";
+      resetImagePreview();  // Reset image preview when closing modal
+    }
+  </script>
+</body>
+</html>
