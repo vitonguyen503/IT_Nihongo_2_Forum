@@ -7,125 +7,7 @@
         <link rel="style" href="/index.css" >
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        .dropdown-item {
-            background-color: #769ede;
-        }
-        .dropdown-item:hover {
-            color: black !important;
-            opacity: 75%;
-        }
-        .dropdown-menu {
-            padding: 0;
-        }
-        .dropdown-divider {
-            margin: 0;
-        }
-        .navbar {
-            background: rgb(77,82,91);
-            background: linear-gradient(180deg, rgba(77,82,91,1) 0%, rgba(91,150,245,1) 98%);
-        }
-        .popover-body {
-            padding: 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Creates a shadow outside the popover */
-            border: none; /* Optional: Removes the border */
-            border-radius: 6px; /* Optional: Adds rounded corners */
-        }
-        .popover-item {
-            display: flex;
-            align-items: center;
-            padding: 8px;
-            width: 100%;
-            box-sizing: border-box; /* Ensure padding is included in width */
-            font-size: 16px;
-            font-weight: 450;
-            transition: background-color 0.2s ease;
-            cursor: pointer;
-        }
-        .popover-item.odd {
-            background-color: #d3d8dc; /* Default background */
-        }
-        .popover-item:hover {
-            background-color: #989da1;
-        }
-
-        .popover-item img {
-            margin-right: 8px;
-        }
-        .popover-footer {
-            text-align: center;
-            font-size: 10px;
-            padding-top: 8px;
-        }
-        .user-info {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-        }
-        .user-info img {
-            width: 60px;  
-            height: 60px;
-            border-radius: 8px;
-            margin-right: 8px;
-            border: 1px solid black;
-        }
-        .user-details {
-            font-size: 12px;
-        }
-        .user-details small {
-            display: block;
-            font-size: 10px;
-            color: gray;
-        }
-
-        /* main */
-        a {
-            text-decoration: none;
-            color: black;
-        }
-        
-        .main_thread {
-            background-color: #bddafb;
-        }
-
-        .thread_box {
-            background-color: #bddafb;
-        }
-
-        .thread_box_main {
-            background-color: #d9d9d9;
-        }
-
-        .th_b_m3_description {
-            background-color: #f1eeee;
-        }
-
-        #content {
-            display: -webkit-box;
-            -webkit-line-clamp: 7; 
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            transition: max-height 0.3s ease; 
-            max-height: 10.5em; 
-        }
-
-        #content.expanded {
-            -webkit-line-clamp: unset; 
-            max-height: none; 
-        }
-
-
-
-        .btnLike {
-            cursor: pointer;
-            width: 150px; 
-            text-align: center;
-            display: inline-block;
-        }
-        .btnLike i {
-            margin-right: 5px; 
-        }
-    </style>
+        <link rel="stylesheet" href="../../assets/css/userCss/homePage.css">
 </head>
 <body onload="showLocalDateTime()">
     <!-- This is the header for all screen -->
@@ -182,9 +64,9 @@
                           News
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                          <li><a class="dropdown-item text-white" href="#">New posts</a></li>
+                          <li><a class="dropdown-item text-white" href="#">New thread</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item text-white" href="#">Your posts</a></li>
+                          <li><a class="dropdown-item text-white" href="#">Your thread</a></li>
                         </ul>
                       </li>
                 </div>
@@ -217,11 +99,22 @@
                             </div>    
                             <div class="th_b_h2_nameUser col-sm-4">
                                 <div class="th_b_h1_right_btn" style="float: right;">
-                                    <div class="btn bg-secondary text-light fw-bold me-3 btnLike" style="border-radius: 0;">
+                                    <div class="btn bg-secondary text-light fw-bold me-3 btnLike rounded-1" style="border-radius: 0;" id="newPostButton">
                                         <i class="bi bi-feather"></i>
                                         NewPost
                                     </div>
-                                    <div class="btn bg-secondary text-light fw-bold btnLike" style="border-radius: 0;" onclick="followedChange(event)" id="btnFollowed">
+                                    <div id="postModal" class="modal" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span> <!-- Close button -->
+                                            <h2>Create New Post <span class="emote">😊</span> </h2>
+                                            <!-- Emoji picker -->
+                                            <div id="emojiPicker"></div>
+                                            <textarea id="postContent" placeholder="What are you thinking... ?"></textarea>
+                                            <!-- Post button -->
+                                            <button id="postButton">Post</button>
+                                        </div>
+                                    </div>
+                                    <div class="btn bg-secondary text-light fw-bold btnLike rounded-1" style="border-radius: 0;" onclick="followedChange(event)" id="btnFollowed">
                                         <!-- <i class="bi bi-check-lg"></i> -->
                                         Follow
                                     </div>
@@ -240,17 +133,20 @@
                     <div class="thread_box_main border border-1 border-black mb-3">
                         <div class="thread_border_main">
                             <div class="th_b_m1 px-2" style="background-color: #524298; color: white;">
-                                <label id="revLocalDateTime"></label>
+                                <label>2024-09-23 09:00:13</label>
                             </div>
                             <div class="th_b_m2 px-2">
                                 <div class="py-2">
                                     <div class="thread_avatar">
-                                        <img style="width: 80px; height: 80px; object-fit: cover;" src="https://p16-capcut-sign-va.ibyteimg.com/tos-alisg-v-643f9f/f2e6f8a83de549818a6dadeed8676ff7~tplv-nhvfeczskr-1:250:0.webp?lk3s=44acef4b&x-expires=1739028906&x-signature=PeJ8MymIQDd0jyP94jxqptSiyNs%3D" alt="Img">
+                                        <img style="width: 80px; height: 80px; object-fit: cover;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s" alt="Img">
                                         <label class="thread_info ms-3">
-                                            <div class="">Nguyễn Văn A</div>
-                                            <div class="text-primary">sinh viên năm 4</div>
+                                            <div class="">Admin</div>
+                                            <div class="text-primary">
+                                                sinh viên <span>K15</span>
+                                            </div>
                                         </label>
-                                        <div class="btn bg-light text-dark" style="float: right;">
+                                        <div class="btn bg-light text-dark" style="float: right;" id="editIcon"
+                                        >
                                             <svg style="width: 20px; height: 20px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>                                
                                         </div>
                                     </div>
@@ -258,13 +154,11 @@
                             </div>
                             <div class="th_b_m3 py-2 px-2">
                                 <div class="border border-1 border-white py-2 px-2">
-                                    <P>
-                                    CHÍNH THỨC PHENIKAA CÔNG BỐ ĐIỂM CHUẨN TRÚNG TUYỂN NĂM 2022 CÁC PHƯƠNG THỨC:
-                                    </P>
-                                    <p id="content">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.
+                                    <p class="content" id="content1">
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
                                     </p>
-                                    <a href="#" id="read-more" onclick="toggleContent(event)">Xem thêm</a>
+                                    <a href="#" class="read-more" id="readMore1" style="display:none;" onclick="toggleContent(event)">Xem thêm</a>
                                 </div>
                             </div>
                             <div class="th_b_m5 py-5 px-2">
@@ -273,12 +167,25 @@
                                         <i class="bi bi-hand-thumbs-up-fill" style="font-size: 24px;"></i>                            
                                     </div>
                                     Nguyễn văn B và 1,5k người khác
-                                    <div style="float: right;">
-                                        <div class="btn bg-light" >
+                                    <!-- Nút trích dẫn (Thay id thành class) -->
+                                    <div style="float: right;" class="openPopup">
+                                        <div class="btn bg-light">
                                             <i class="bi bi-chat-dots-fill" style="font-size: 24px;"></i>
                                         </div>
-                                        trích dẫn
+                                        Trích dẫn
                                     </div>
+
+                                    <!-- Modal (Chỉ có một modal hiển thị cho cả 2 nút) -->
+                                    <div id="postModal1" class="modal" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close1">&times;</span> <!-- Nút đóng -->
+                                            <p class="title"><strong>CHÍNH THỨC:</strong> PHENIKAA CÔNG BỐ ĐIỂM CHUẨN TRÚNG TUYỂN NĂM 2022 CÁC PHƯƠNG THỨC:</p>
+                                            <textarea id="postContent" placeholder="What are you thinking... ?"></textarea>
+                                            <!-- Nút xác nhận -->
+                                            <button id="confirm">Xác nhận</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="th_b_m6_btn" style="float: right;">
                                     <div class="btn">
@@ -291,35 +198,36 @@
                     <div class="thread_box_main border border-1 border-black">
                         <div class="thread_border_main">
                             <div class="th_b_m1 px-2" style="background-color: #524298; color: white;">
-                                <label id="revLocalDateTime"></label>
+                                <label>2024-09-22 22:00:58</label>
                             </div>
                             <div class="th_b_m2 px-2">
                                 <div class="py-2">
                                     <div class="thread_avatar">
-                                        <img style="width: 80px; height: 80px; object-fit: cover;" src="https://p16-capcut-sign-va.ibyteimg.com/tos-alisg-v-643f9f/f2e6f8a83de549818a6dadeed8676ff7~tplv-nhvfeczskr-1:250:0.webp?lk3s=44acef4b&x-expires=1739028906&x-signature=PeJ8MymIQDd0jyP94jxqptSiyNs%3D" alt="Img">
+                                        <img style="width: 80px; height: 80px; object-fit: cover;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s" alt="Img">
                                         <label class="thread_info ms-3">
                                             <div class="">Nguyễn Văn A</div>
-                                            <div class="text-primary">sinh viên năm 4</div>
+                                            <div class="text-primary">
+                                                sinh viên <span>K15</span>
+                                            </div>
                                         </label>
                                         <div class="btn bg-light text-dark" style="float: right;">
-                                            <svg style="width: 20px; height: 20px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>                                
+                                            <svg style="width: 20px; height: 20px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>                                
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="th_b_m3 py-2 px-2">
-                                <div class="th_b_m3_description border border-1  py-2 px-2">
-                                    <P>
-                                    CHÍNH THỨC PHENIKAA CÔNG BỐ ĐIỂM CHUẨN TRÚNG TUYỂN NĂM 2022 CÁC PHƯƠNG THỨC:
-                                    </P>
-                                    <p id="content">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui illum ipsum sit, iusto quae, ab dignissimos molestias ipsam tenetur minima natus, harum perferendis facere reprehenderit tempore dicta veritatis pariatur. Nostrum.
+                                <div class="border border-1 border-white py-2 px-2">
+                                    <p class="content" id="content2">
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
                                     </p>
-                                    <a href="#" id="read-more" onclick="toggleContent(event)">Xem thêm</a>
+                                    <a href="#" class="read-more" id="readMore1" style="display:none;" onclick="toggleContent(event)">Xem thêm</a>
                                 </div>
                             </div>
+                            
                             <div class="th_b_m4 py-2 px-2">
-                                K-16 NHA chào mọi người nhaaaaa
+                                Go go
                             </div>
                             <div class="th_b_m5 py-5 px-2">
                                 <div class="th_b_m5_btn">
@@ -327,12 +235,25 @@
                                         <i class="bi bi-hand-thumbs-up-fill" style="font-size: 24px;"></i>                            
                                     </div>
                                     Nguyễn văn B và 1,5k người khác
-                                    <div style="float: right;">
-                                        <div class="btn bg-light" >
+                                    <!-- Nút trích dẫn (Thay id thành class) -->
+                                    <div style="float: right;" class="openPopup">
+                                        <div class="btn bg-light">
                                             <i class="bi bi-chat-dots-fill" style="font-size: 24px;"></i>
                                         </div>
-                                        trích dẫn
+                                        Trích dẫn
                                     </div>
+
+                                    <!-- Modal (Chỉ có một modal hiển thị cho cả 2 nút) -->
+                                    <div id="postModal1" class="modal" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close1">&times;</span> <!-- Nút đóng -->
+                                            <p class="title"><strong>CHÍNH THỨC:</strong> PHENIKAA CÔNG BỐ ĐIỂM CHUẨN TRÚNG TUYỂN NĂM 2022 CÁC PHƯƠNG THỨC:</p>
+                                            <textarea id="postContent" placeholder="What are you thinking... ?"></textarea>
+                                            <!-- Nút xác nhận -->
+                                            <button id="confirm">Xác nhận</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="th_b_m6_btn" style="float: right;">
                                     <div class="btn">
@@ -346,6 +267,264 @@
             </div>
         </div>
     </main>
+    <!-- Overlay và Popup -->
+    <div class="overlay" id="overlay" style="display: none"></div>
+    <div class="popup" id="popup" style="display: none">
+      <!-- popup admin edit -->
+      <span class="close-btn" onclick="closeForm()">✖</span>
+      <div id="codeContainerEdit" class="form">
+        <div
+          class="container overflow-hidden text-center"
+          style="height: 30%"
+        >
+          <div class="row gx-0">
+            <div class="col">
+              <div class="p-0">
+                <div class="card-content" style="width: 100%">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s"
+                    class="img-thumbnail"
+                    alt="Avatar"
+                  />
+                  <div class="name">
+                    <p class="card-text" style="margin-bottom: 5px">
+                      Nguyen Thi Nhu Quynh
+                    </p>
+                    <p class="card-text" style="color: rgb(85, 85, 173)">
+                      Sinh viên năm 4
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col" style="height: 100%">
+              <div class="p-0">
+                <div class="btntickdelete">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="size-6 edit"
+                  >
+                    <path
+                      d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z"
+                    />
+                    <path
+                      d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z"
+                    />
+                  </svg>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="size-6 save"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6 delete"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="editpost">
+          <div class="text" id="textbox">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+            sollicitudin accumsan felis, nec luctus dui molestie eget. Vivamus
+            mattis pulvinar dapibus. Maecenas tincidunt in nibh a convallis.
+            Cras in imperdiet lacus. Cras id tempor augue. Phasellus a tempus
+            enim. Vivamus risus felis, tristique nec condimentum quis,
+            consequat at est. Donec ut ipsum turpis. Integer sapien lacus,
+            fringilla vel sem eget, lacinia tristique lacus. Integer
+            condimentum malesuada neque sit amet hendrerit. Suspendisse
+            volutpat elit non turpis imperdiet, eget fringilla ante laoreet.
+            Aliquam nec erat id elit volutpat vehicula vitae nec neque. Sed
+            tincidunt a leo ut eleifend. Aliquam nec sodales augue. Donec
+            lacinia velit at neque tincidunt aliquam. Proin in maximus risus.
+            Pellentesque turpis turpis, consequat in elit a, lobortis lacinia
+            lectus. Nunc vehicula elit ut metus hendrerit porttitor. Aliquam
+            pharetra tincidunt congue. Nullam a augue egestas, lacinia ex et,
+            molestie sem. Ut interdum volutpat nisl. Suspendisse potenti.
+            Aliquam erat volutpat. Etiam et sodales neque. Integer quis augue
+            non risus venenatis porta pellentesque nec odio. Donec sit amet
+            odio condimentum, dapibus elit scelerisque, facilisis libero. Nam
+            semper magna nec neque malesuada rhoncus. Pellentesque habitant
+            morbi tristique senectus et netus et malesuada fames ac turpis
+            egestas. Vestibulum commodo nunc at massa feugiat, ut efficitur
+            ante luctus. Aliquam ut sollicitudin tellus, in efficitur odio.
+            Nunc a justo molestie, viverra felis eget, sagittis arcu. Cras ac
+            tempor leo. Nulla fermentum pretium sollicitudin. Vivamus vitae
+            turpis ornare, consectetur nisl a, aliquet felis. Proin facilisis
+            convallis ex sit amet venenatis. Sed in erat ullamcorper, laoreet
+            ex sed, tempor tortor. Pellentesque feugiat non erat in luctus.
+            Proin in ultrices felis. Proin vulputate dolor ante, non mattis
+            massa auctor luctus. Quisque non felis ut urna mollis dignissim
+            sit amet a arcu.
+          </div>
+          <div
+            id="toggle-button"
+            onclick="toggleText()"
+            style="cursor: pointer"
+          >
+            Xem thêm
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container để chứa nội dung modal -->
+    <div id="modal-container">
+      <!-- Modal cho icon "edit" -->
+      <div
+        class="modal fade"
+        id="editModal"
+        tabindex="-1"
+        aria-labelledby="editModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">
+                Xác nhận chỉnh sửa
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Bạn có chắc chắn muốn chỉnh sửa không?
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Hủy
+              </button>
+              <button
+                data-bs-dismiss="modal"
+                type="button"
+                class="btn btn-primary"
+              >
+                Đồng ý
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nội dung của modal save-->
+      <div
+        class="modal fade"
+        id="saveModal"
+        tabindex="-1"
+        aria-labelledby="saveModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="saveModalLabel">
+                Xác nhận lưu lại chỉnh sửa
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Bạn có chắc chắn muốn lưu lại chỉnh sửa không?
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Hủy
+              </button>
+              <button
+                data-bs-dismiss="modal"
+                type="button"
+                class="btn btn-primary"
+              >
+                Đồng ý
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nội dung của modal delete-->
+      <div
+        class="modal fade"
+        id="deleteModal"
+        tabindex="-1"
+        aria-labelledby="deleteModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">
+                Xác nhận xóa bài post
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn muốn xóa không?</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Hủy
+              </button>
+              <button
+                data-bs-dismiss="modal"
+                type="button"
+                class="btn btn-primary"
+              >
+                Đồng ý
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -401,19 +580,37 @@
             document.getElementById('revLocalDateTime').textContent = revLocalDateTime;
         }
 
-        function toggleContent(event) {
-            event.preventDefault();
-            var content = document.getElementById('content');
-            var readMore = document.getElementById('read-more');
+        document.addEventListener("DOMContentLoaded", function() {
+            const contents = document.querySelectorAll('.content');
+            const readMoreLinks = document.querySelectorAll('.read-more');
 
-            if (content.classList.contains('expanded')) {
-                content.classList.remove('expanded');
-                readMore.innerText = 'Xem thêm';
-            } else {
-                content.classList.add('expanded');
-                readMore.innerText = 'Thu gọn';
-            }
-        }
+            contents.forEach((content, index) => {
+                const lineHeight = parseInt(window.getComputedStyle(content).lineHeight, 10); // Lấy chiều cao của 1 dòng
+                const maxLines = 7; // Số dòng tối đa trước khi ẩn
+                const maxHeight = lineHeight * maxLines; // Chiều cao tối đa tính theo số dòng
+
+                // Kiểm tra chiều cao của đoạn văn bản
+                if (content.scrollHeight > maxHeight) {
+                    readMoreLinks[index].style.display = 'inline'; // Hiển thị nút "Xem thêm"
+                }
+
+                // Toggle nội dung khi nhấn vào nút "Xem thêm"
+                readMoreLinks[index].addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    // Kiểm tra nếu đang thu gọn thì mở rộng, và ngược lại
+                    if (content.classList.contains('expanded')) {
+                        content.classList.remove('expanded');
+                        readMoreLinks[index].innerText = 'Xem thêm';
+                    } else {
+                        content.classList.add('expanded');
+                        readMoreLinks[index].innerText = 'Thu gọn';
+                    }
+                });
+            });
+        });
+
+
 
 
 
@@ -441,6 +638,96 @@
                 btnLiked.innerHTML = '<i class="bi bi-hand-thumbs-up-fill" style = "font-size: 24px;"></i>';
             }
         }
+
+        // JavaScript
+      document.addEventListener("DOMContentLoaded", function () {
+        // Gọi hàm openPopup() khi người dùng ấn vào icon edit
+        document
+          .getElementById("editIcon")
+          .addEventListener("click", openPopup);
+
+        // Đóng popup
+        function closePopup() {
+          document.getElementById("overlay").style.display = "none";
+          document.getElementById("popup").style.display = "none";
+        }
+
+        // Thêm sự kiện cho nút close
+        document
+          .querySelector(".close-btn")
+          .addEventListener("click", closePopup);
+      });
+
+      // Mở popup và overlay
+      function openPopup() {
+        var overlay = document.getElementById("overlay");
+        var popup = document.getElementById("popup");
+
+        overlay.style.display = "block";
+        popup.style.display = "block";
+
+        // Đảm bảo nội dung popup không bị ẩn
+        document.getElementById("codeContainerEdit").style.display = "block";
+      }
+
+      function toggleText() {
+        var textBox = document.getElementById("textbox");
+        var button = document.getElementById("toggle-button");
+      
+        if (textBox.classList.contains("expanded")) {
+          textBox.classList.remove("expanded");
+          textBox.style.overflow = "hidden";
+          button.innerHTML = "Xem thêm";
+        } else {
+          textBox.classList.add("expanded");
+          textBox.style.overflowY = "scroll";
+          button.innerHTML = "Thu gọn";
+        }
+      }
+      
+      document.querySelector(".edit").addEventListener("click", function () {
+        showEditModal();
+      });
+      
+      document.querySelector(".save").addEventListener("click", function () {
+        showSaveModal();
+      });
+      
+      document.querySelector(".delete").addEventListener("click", function () {
+        showDeleteModal();
+      });
+      
+      function showEditModal() {
+        var modalElement = document.getElementById("editModal");
+        if (modalElement) {
+          var modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        } else {
+          console.error('Không tìm thấy phần tử với id="editModal"');
+        }
+      }
+      
+      function showSaveModal() {
+        var modalElement = document.getElementById("saveModal");
+        if (modalElement) {
+          var modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        } else {
+          console.error('Không tìm thấy phần tử với id="saveModal"');
+        }
+      }
+      
+      function showDeleteModal() {
+        var modalElement = document.getElementById("deleteModal");
+        if (modalElement) {
+          var modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        } else {
+          console.error('Không tìm thấy phần tử với id="deleteModal"');
+        }
+      }
+      
     </script>    
+    <script src="../../assets/js/taopost.js"></script>
 </body>
 </html>
