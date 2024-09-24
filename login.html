@@ -1,195 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form | Dan Aleko</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
- <style>
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-  body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(giaodien.PNG) ;
-    background-size: cover;
-    background-position: center;
-  }
-  .wrapper{
-    width: 420px;
-    background:#fff ;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(9px);
-    color: #050505;
-    border-radius: 12px;
-    padding: 30px 40px;
-  }
-  .wrapper h1{
-    font-size: 25px;
-    text-align: center;
-  }
-  .wrapper .input-box{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-  }
-  .input-box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: 2px solid black; /* Viền đen */
-    outline: none;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #7a7a7a; /* Màu chữ nhạt */
-    
-    padding: 20px 45px 20px 20px;
-}
-.input-box input::placeholder{
-    color: #b0b0b0; /* Màu chữ nhạt cho placeholder */
-}
-  .input-box i{
-    position: absolute;
-    right: 20px;
-    top: 30%;
-    transform: translate(-50%);
-    font-size: 20px;
-    color: rgb(195, 195, 214); /* Màu xám nhạt cho biểu tượng */
-   cursor: pointer;
-  }
-  .wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-    color:#143971;
-  }
-  .remember-forgot label input{
-    accent-color: #0a0a0a;
-    margin-right: 3px;
-  
-  }
-  
-  .wrapper .btn{
-    width: 100%;
-    height: 45px;
-    background: #2b6dd1;
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: 600;
-    margin-top: 60px;
-  }
-  .wrapper .btn:hover{
-    background: #124188;
-  }
-  .wrapper .register-link{
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-  
-  }
-  .register-link p a{
-    text-decoration: none;
-    font-weight: 600;
-    color:#143971;
-  }
-  
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Account</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .register-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register-form h5 {
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .register-form input, 
+        .register-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #87CEEB; /* Light blue border */
+            border-radius: 4px;
+        }
+
+        .register-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .register-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .register-form p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .register-form a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .register-form a:hover {
+            text-decoration: underline;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .row h5 {
+            margin-bottom: 6px;
+        }
+
+        .row select {
+            width: 48%; /* Adjust width for inline elements */
+        }
+    </style>
 </head>
 <body>
-    <div class="wrapper">
-        <form id="loginForm">
-          <h1>Login to your account</h1>
-          <div class="input-box">
-            <p style="padding-bottom: 20px;"> Email</p>
-            <input type="text" id="email" placeholder="Email" required>
-            <span id="emailError" style="color: red; display: none;">Vui lòng nhập đúng định dạng email</span>
-          </div>
-          
-          <div class="input-box">
-            <p style="padding-top: 25px;"> Password 
-              <a href="/forget.html" class="remember-forgot" style="margin-left: 280px; text-decoration: none; font-weight: 600;">Forgot?</a>
-            </p>
-            <input type="password" id="password" placeholder="Password" required>
-            <i class="fas fa-eye" id="togglePassword" style="cursor: pointer; position: absolute; right: 15px; top: 150%;"></i>
-          </div>
-          <button type="submit" class="btn">Login now</button>
-          <div id="loginSuccess" style="color: green; display: none;">đăng nhập thành công</div>
-          <div id="loginError" style="color: red; display: none;">Email hoặc mật khẩu không chính xác</div>
-          <div class="register-link">
-            <p>Don't Have An Account? <a href="#">Sign up</a></p>
-          </div>
+    <div class="register-container">
+        <form action="/register" method="POST" class="register-form" id="registerForm">
+            <h2>Create an account</h2>
+
+            <!-- Email -->
+            <h5>Email</h5>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <!-- Full Name -->
+            <h5>Full Name</h5>
+            <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+
+            <!-- Phone Number -->
+            <h5>Phone Number</h5>
+            <input type="tel" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+
+            <!-- Address -->
+            <h5>Address</h5>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+            <!-- Gender and School Year (same row) -->
+            <div class="row">
+                <div>
+                    <!-- Gender -->
+                    <h5>Gender</h5>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <!-- School Year -->
+                    <h5>School Year</h5>
+                    <select id="school_year" name="school_year" required>
+                        <option value="">Select school year</option>
+                        <option value="first">First Year</option>
+                        <option value="second">Second Year</option>
+                        <option value="third">Third Year</option>
+                        <option value="fourth">Fourth Year</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <h5>Password</h5>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <!-- Re-enter Password -->
+            <h5>Re-enter Password</h5>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter your password" required>
+
+            <!-- Submit Button -->
+            <button type="submit">Create account</button>
+
+            <!-- Already have an account -->
+            <p>Already have an account? <a href="/login">Log in</a></p>
         </form>
-      </div>
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const togglePassword = document.querySelector('#togglePassword');
-          const password = document.querySelector('#password');
-          const form = document.querySelector('#loginForm');
-          const emailInput = document.querySelector('#email');
-          const emailError = document.querySelector('#emailError');
-          const loginSuccess = document.querySelector('#loginSuccess');
-          const loginError = document.querySelector('#loginError');
-      
-          // Tài khoản đã lưu sẵn
-          const storedEmail = 'user@example.com';
-          const storedPassword = 'password123';
-      
-          // Toggle mật khẩu hiển thị hoặc ẩn
-          togglePassword.addEventListener('click', function () {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
-          });
-      
-          // Regular expression để kiểm tra định dạng email
-          function validateEmail(email) {
-            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return re.test(String(email).toLowerCase());
-          }
-      
-          // Kiểm tra form khi submit
-          form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Ngăn chặn submit mặc định
-      
-            const email = emailInput.value;
-            const passwordValue = password.value;
-      
-            // Kiểm tra định dạng email
-            if (!validateEmail(email)) {
-              emailError.style.display = 'block';
-              loginError.style.display = 'none';
-              loginSuccess.style.display = 'none';
-            } else {
-              emailError.style.display = 'none';
-              
-              // Kiểm tra email và mật khẩu
-              if (email === storedEmail && passwordValue === storedPassword) {
-                loginSuccess.style.display = 'block';
-                loginError.style.display = 'none';
-              } else {
-                loginError.style.display = 'block';
-                loginSuccess.style.display = 'none';
-              }
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const password = document.querySelector('input[name="password"]').value;
+            const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
+
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
             }
-          });
         });
-      </script>
-      
-      
+    </script>
 </body>
 </html>
