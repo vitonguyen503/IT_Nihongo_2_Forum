@@ -379,8 +379,7 @@ button#confirm:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
-  display: none; /* Ẩn mặc định */
-  z-index: 99999; /* Giá trị z-index rất cao để đảm bảo hiển thị trên mọi phần tử khác */
+  z-index: 10; /* Để trên cùng */
 }
 
 .popup {
@@ -394,10 +393,8 @@ button#confirm:hover {
   padding-left: 20px;
   padding-right: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  z-index: 100000; /* Giá trị z-index cao hơn overlay */
-  display: none; /* Ẩn mặc định */
+  z-index: 20; /* Để trên overlay */
 }
-
 .popup .form {
   width: 100%;
   height: 80%;
@@ -408,4 +405,104 @@ button#confirm:hover {
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.modal {
+  z-index: 1050;
+}
+
+/* report */
+/* Ẩn popup mặc định */
+
+.btn {
+  cursor: pointer; /* Đổi con trỏ khi hover */
+}
+
+/* Popup và các phần tử bên trong đã có từ trước */
+.rp_popup {
+  display: none; /* Ẩn đi ban đầu */
+  position: fixed; /* Vị trí cố định */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Căn giữa màn hình */
+  background-color: #fff; /* Nền trắng */
+  border: 2px solid #333; /* Viền đậm */
+  padding: 20px;
+  z-index: 9999; /* Đặt trên cùng để không bị các phần tử khác che khuất */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Thêm bóng cho popup */
+  border-radius: 8px; /* Bo góc cho popup */
+  width: 450px; /* Chiều rộng khung cửa sổ */
+  height: 500px; /* Chiều cao khung cửa số */
+}
+
+.rp_popup h2 {
+  margin: 0; /* Bỏ margin */
+  font-size: 28px; /* Kích thước chữ lớn hơn */
+  text-align: center; /* Căn giữa tiêu đề */
+  color: #333; /* Màu chữ tối */
+}
+
+.rp_border {
+  border-bottom: 1px solid #ddd; /* Viền mở nhạt dưới tiêu đề */
+  margin: 10px 0; /* Khoảng cách trên và dưới */
+}
+
+.rp_popup ul {
+  list-style: none; /* Bỏ dấu đầu dòng */
+  padding: 0; /* Bỏ padding */
+}
+
+.rp_popup .rp_report-item {
+  margin: 8px; /* Khoảng cách giữa các mục trong danh sách */
+  padding: 10px; /* Khoảng cách bên trong dòng */
+  font-size: 16px; /* Kích thước chữ cho các mục */
+  color: #555; /* Màu chữ cho các mục */
+  cursor: pointer; /* Đổi con trỏ khi hover */
+  transition: background-color 0.3s, border 0.3s; /* Hiệu ứng chuyển màu và viền */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng mượt mà */
+}
+
+/* Hiệu ứng khi hover và chọn dòng */
+.rp_popup .rp_report-item:hover,
+.rp_popup .rp_report-item.selected {
+  background-color: #f0f0f0; /* Nền xám khi hover hoặc đã chọn */
+  border: 1px solid #4CAF50; /* Viền khi đã chọn */
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+}
+
+/* Nút lưu */
+.rp_popup .rp_save-button {
+  background-color: #4CAF50; /* Màu xanh lá */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px; /* Bo góc cho nút */
+  cursor: pointer;
+  font-size: 16px; /* Kích thước chữ cho nút */
+  position: absolute; /* Vị trí tuyệt đối */
+  bottom: 20px; /* Cách từ dưới lên */
+  right: 20px; /* Cách từ bên phải vào */
+  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+/* Hiệu ứng khi hover nút lưu */
+.rp_popup .rp_save-button:hover {
+  background-color: #45a049; /* Màu xanh lá đậm khi hover */
+}
+
+/* Nút đóng */
+.rp_popup .rp_close {
+  position: absolute; /* Vị trí tuyệt đối */
+  top: 10px; /* Đặt cách từ trên xuống */
+  right: 10px; /* Đặt cách từ bên phải vào */
+  cursor: pointer; /* Đổi con trỏ khi hover */
+  font-size: 20px; /* Kích thước chữ cho nút đóng */
+  color: #aaa; /* Màu chữ cho nút đóng */
+  border-radius: 50%; /* Bo tròn cho nút đóng */
+}
+
+/* Hiệu ứng khi hover nút đóng */
+.rp_popup .rp_close:hover {
+  color: #000; /* Màu chữ cho nút đóng khi hover */
 }

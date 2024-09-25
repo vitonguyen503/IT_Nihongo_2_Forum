@@ -59,7 +59,7 @@
 </head>
 <body>
     <div class="modal-form" id="formContainer">
-        <span class="close-btn" onclick="closeForm()">✖</span>
+        <span class="close-btn" onclick="window.location.href='../user/userHomePage.html'">✖</span>
         <h4 class="text">Chủ đề mới</h4>
         <form id="uploadForm">
             <div class="form-group">
@@ -69,13 +69,10 @@
             <img id="imagePreview" class="img-preview" src="" alt="Hình ảnh xem trước">
             <div class="text mt-3">
                 <button type="button" class="btn btn-success">Xác nhận</button>
-                <button type="button" class="btn btn-danger" onclick="resetForm()">Hủy</button>
+                <button type="button" class="btn btn-danger" onclick="window.location.href='../user/userHomePage.html'">Hủy</button>
             </div>
         </form>
     </div>
-
-    <!-- Nút ẩn -->
-    <button id="showFormBtn" class="btn btn-primary hidden" onclick="openForm()">Mở lại form</button>
 
     <script>
         function updateImagePreview() {
@@ -92,12 +89,6 @@
         function resetForm() {
             document.getElementById('uploadForm').reset();
             document.getElementById('imagePreview').style.display = 'none'; // Ẩn hình ảnh
-        }
-    
-        function closeForm() {
-            // Ẩn form và hiển thị nút
-            document.getElementById('formContainer').style.display = 'none';
-            document.getElementById('showFormBtn').classList.remove('hidden');
         }
 
         function openForm() {

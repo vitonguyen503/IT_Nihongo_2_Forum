@@ -9,9 +9,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
         <link rel="stylesheet" href="../../assets/css/userCss/homePage.css">
 </head>
-<body onload="showLocalDateTime()">
-    <!-- This is the header for all screen -->
-    <header>
+<body>
+    <div id="ContainerAll" onload="showLocalDateTime()">
+      <div id="HomeContainer">
+        <!-- This is the header for all screen -->
+      <header>
         <div class="px-3 py-2 text-bg-dark border-bottom bg-body-secondary">
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -28,6 +30,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                         </svg>                                             
                     </button>
+  
                     <div class="dropdown text-end">
                         <button type="button" class="btn" id="avatarButton" 
                                 data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
@@ -41,7 +44,7 @@
                 </div>
             </div>
         </div>
-
+  
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -58,28 +61,27 @@
                         <li><a class="dropdown-item text-white" href="#">Search threads</a></li>
                       </ul>
                     </li>
-
+  
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           News
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                          <li><a class="dropdown-item text-white" href="#">New thread</a></li>
+                          <li><a class="dropdown-item text-white" href="../admin/newThread.html">New thread</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item text-white" href="#">Your thread</a></li>
                         </ul>
                       </li>
-                </div>
             </div>
         </nav>
-
+  
         <div class="py-1 border-bottom bg-secondary-subtle">
             <div class="container ">
                 <p class="ps-2 py-1 mb-0 fw-bold">Welcome, PHENIKAA</p>
             </div>
         </div>  
-    </header>
-
+      </header>
+  
     <main>
         <div class="main_thread">
             <div class="thread_boder container">
@@ -174,7 +176,7 @@
                                         </div>
                                         Trích dẫn
                                     </div>
-
+  
                                     <!-- Modal (Chỉ có một modal hiển thị cho cả 2 nút) -->
                                     <div id="postModal1" class="modal" style="display: none;">
                                         <div class="modal-content">
@@ -185,15 +187,32 @@
                                             <button id="confirm">Xác nhận</button>
                                         </div>
                                     </div>
-
+  
                                 </div>
                                 <div class="th_b_m6_btn" style="float: right;">
                                     <div class="btn">
-                                        <img style="width: 30px; height: 30px" src="https://static6.depositphotos.com/1004657/582/i/450/depositphotos_5825158-stock-photo-warning-sign-isolated-on-white.jpg" alt="Img">
+                                        <img class="report-icon" style="width: 30px; height: 30px" src="https://static6.depositphotos.com/1004657/582/i/450/depositphotos_5825158-stock-photo-warning-sign-isolated-on-white.jpg" alt="Img">
                                     </div>
                                 </div>
-                            </div>
+                                <!-- Popup báo cáo -->
+                                <div id="report-popup" class="rp_popup">
+                                  <div class="rp_popup-content">
+                                      <span class="rp_close">&times;</span>
+                                      <h2>Báo cáo</h2>
+                                      <div class="rp_border"></div>
+                                      <ul>
+                                          <li><strong>Báo cáo bài đăng này</strong></li> <!-- Dòng thêm vào -->
+                                          <li class="rp_report-item">Gây hiểu nhầm hoặc lừa đảo</li>
+                                          <li class="rp_report-item">Thiếu ứng xử về mặt tình dục</li>
+                                          <li class="rp_report-item">Bạo lực</li>
+                                          <li class="rp_report-item">Xúc phạm</li>
+                                          <li class="rp_report-item">Nội dung bị cấm</li>
+                                      </ul>
+                                      <button class="rp_save-button">Xác nhận</button>
+                                  </div>
+                                </div>
                         </div>
+                    </div>
                     </div>
                     <div class="thread_box_main border border-1 border-black">
                         <div class="thread_border_main">
@@ -242,7 +261,7 @@
                                         </div>
                                         Trích dẫn
                                     </div>
-
+  
                                     <!-- Modal (Chỉ có một modal hiển thị cho cả 2 nút) -->
                                     <div id="postModal1" class="modal" style="display: none;">
                                         <div class="modal-content">
@@ -253,12 +272,29 @@
                                             <button id="confirm">Xác nhận</button>
                                         </div>
                                     </div>
-
+  
                                 </div>
                                 <div class="th_b_m6_btn" style="float: right;">
                                     <div class="btn">
-                                        <img style="width: 30px; height: 30px" src="https://static6.depositphotos.com/1004657/582/i/450/depositphotos_5825158-stock-photo-warning-sign-isolated-on-white.jpg" alt="Img">
+                                        <img class="report-icon" style="width: 30px; height: 30px" src="https://static6.depositphotos.com/1004657/582/i/450/depositphotos_5825158-stock-photo-warning-sign-isolated-on-white.jpg" alt="Img">
                                     </div>
+                                </div>
+                                <!-- Popup báo cáo -->
+                                <div id="report-popup" class="rp_popup">
+                                  <div class="rp_popup-content">
+                                      <span class="rp_close">&times;</span>
+                                      <h2>Báo cáo</h2>
+                                      <div class="rp_border"></div>
+                                      <ul>
+                                          <li><strong>Báo cáo bài đăng này</strong></li> <!-- Dòng thêm vào -->
+                                          <li class="rp_report-item">Gây hiểu nhầm hoặc lừa đảo</li>
+                                          <li class="rp_report-item">Thiếu ứng xử về mặt tình dục</li>
+                                          <li class="rp_report-item">Bạo lực</li>
+                                          <li class="rp_report-item">Xúc phạm</li>
+                                          <li class="rp_report-item">Nội dung bị cấm</li>
+                                      </ul>
+                                      <button class="rp_save-button">Xác nhận</button>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -267,263 +303,241 @@
             </div>
         </div>
     </main>
-    <!-- Overlay và Popup -->
-    <div class="overlay" id="overlay" style="display: none"></div>
-    <div class="popup" id="popup" style="display: none">
-      <!-- popup admin edit -->
-      <span class="close-btn" onclick="closeForm()">✖</span>
-      <div id="codeContainerEdit" class="form">
-        <div
-          class="container overflow-hidden text-center"
-          style="height: 30%"
-        >
-          <div class="row gx-0">
-            <div class="col">
-              <div class="p-0">
-                <div class="card-content" style="width: 100%">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s"
-                    class="img-thumbnail"
-                    alt="Avatar"
-                  />
-                  <div class="name">
-                    <p class="card-text" style="margin-bottom: 5px">
-                      Nguyen Thi Nhu Quynh
-                    </p>
-                    <p class="card-text" style="color: rgb(85, 85, 173)">
-                      Sinh viên năm 4
-                    </p>
+      </div>
+      <!-- Overlay và Popup -->
+      <div class="overlay" id="overlay" style="display: none"></div>
+      <div class="popup" id="popup" style="display: none">
+        <!-- popup admin edit -->
+        <span class="close-btn" onclick="closeForm()">✖</span>
+        <div id="codeContainerEdit" class="form">
+          <div
+            class="container overflow-hidden text-center"
+            style="height: 30%"
+          >
+            <div class="row gx-0">
+              <div class="col">
+                <div class="p-0">
+                  <div class="card-content" style="width: 100%">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s"
+                      class="img-thumbnail"
+                      alt="Avatar"
+                    />
+                    <div class="name">
+                      <p class="card-text" style="margin-bottom: 5px">
+                        Nguyen Thi Nhu Quynh
+                      </p>
+                      <p class="card-text" style="color: rgb(85, 85, 173)">
+                        Sinh viên năm 4
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="height: 100%">
+                <div class="p-0">
+                  <div class="btntickdelete">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="size-6 edit"
+                    >
+                      <path
+                        d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z"
+                      />
+                      <path
+                        d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z"
+                      />
+                    </svg>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="size-6 save"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="size-6 delete"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col" style="height: 100%">
-              <div class="p-0">
-                <div class="btntickdelete">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    class="size-6 edit"
-                  >
-                    <path
-                      d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z"
-                    />
-                    <path
-                      d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z"
-                    />
-                  </svg>
+          </div>
+          <div class="editpost">
+            <div class="text" id="textbox">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              sollicitudin accumsan felis, nec luctus dui molestie eget. Vivamus
+              mattis pulvinar dapibus. Maecenas tincidunt in nibh a convallis.
+              Cras in imperdiet lacus. Cras id tempor augue. Phasellus a tempus
+              enim. Vivamus risus felis, tristique nec condimentum quis,
+              consequat at est. Donec ut ipsum turpis. Integer sapien lacus,
+              fringilla vel sem eget, lacinia tristique lacus. Integer
+              condimentum malesuada neque sit amet hendrerit. Suspendisse
+              volutpat elit non turpis imperdiet, eget fringilla ante laoreet.
+              Aliquam nec erat id elit volutpat vehicula vitae nec neque. Sed
+              tincidunt a leo ut eleifend. Aliquam nec sodales augue. Donec
+              lacinia velit at neque tincidunt aliquam. Proin in maximus risus.
+              Pellentesque turpis turpis, consequat in elit a, lobortis lacinia
+              lectus. Nunc vehicula elit ut metus hendrerit porttitor. Aliquam
+              pharetra tincidunt congue. Nullam a augue egestas, lacinia ex et,
+              molestie sem. Ut interdum volutpat nisl. Suspendisse potenti.
+              Aliquam erat volutpat. Etiam et sodales neque. Integer quis augue
+              non risus venenatis porta pellentesque nec odio. Donec sit amet
+              odio condimentum, dapibus elit scelerisque, facilisis libero. Nam
+              semper magna nec neque malesuada rhoncus. Pellentesque habitant
+              morbi tristique senectus et netus et malesuada fames ac turpis
+              egestas. Vestibulum commodo nunc at massa feugiat, ut efficitur
+              ante luctus. Aliquam ut sollicitudin tellus, in efficitur odio.
+              Nunc a justo molestie, viverra felis eget, sagittis arcu. Cras ac
+              tempor leo. Nulla fermentum pretium sollicitudin. Vivamus vitae
+              turpis ornare, consectetur nisl a, aliquet felis. Proin facilisis
+              convallis ex sit amet venenatis. Sed in erat ullamcorper, laoreet
+              ex sed, tempor tortor. Pellentesque feugiat non erat in luctus.
+              Proin in ultrices felis. Proin vulputate dolor ante, non mattis
+              massa auctor luctus. Quisque non felis ut urna mollis dignissim
+              sit amet a arcu.
+            </div>
+            <div
+              id="toggle-button"
+              onclick="toggleText()"
+              style="cursor: pointer"
+            >
+              Xem thêm
+            </div>
+          </div>
+        </div>
+      </div>
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    class="size-6 save"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-6 delete"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-                    />
-                  </svg>
-                </div>
+      <!-- Container để chứa nội dung modal -->
+      <div id="modal-container">
+        <!-- Modal cho icon "edit" -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Xác nhận chỉnh sửa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Bạn có chắc chắn muốn chỉnh sửa không?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary">Đồng ý</button>
               </div>
             </div>
           </div>
         </div>
-        <div class="editpost">
-          <div class="text" id="textbox">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            sollicitudin accumsan felis, nec luctus dui molestie eget. Vivamus
-            mattis pulvinar dapibus. Maecenas tincidunt in nibh a convallis.
-            Cras in imperdiet lacus. Cras id tempor augue. Phasellus a tempus
-            enim. Vivamus risus felis, tristique nec condimentum quis,
-            consequat at est. Donec ut ipsum turpis. Integer sapien lacus,
-            fringilla vel sem eget, lacinia tristique lacus. Integer
-            condimentum malesuada neque sit amet hendrerit. Suspendisse
-            volutpat elit non turpis imperdiet, eget fringilla ante laoreet.
-            Aliquam nec erat id elit volutpat vehicula vitae nec neque. Sed
-            tincidunt a leo ut eleifend. Aliquam nec sodales augue. Donec
-            lacinia velit at neque tincidunt aliquam. Proin in maximus risus.
-            Pellentesque turpis turpis, consequat in elit a, lobortis lacinia
-            lectus. Nunc vehicula elit ut metus hendrerit porttitor. Aliquam
-            pharetra tincidunt congue. Nullam a augue egestas, lacinia ex et,
-            molestie sem. Ut interdum volutpat nisl. Suspendisse potenti.
-            Aliquam erat volutpat. Etiam et sodales neque. Integer quis augue
-            non risus venenatis porta pellentesque nec odio. Donec sit amet
-            odio condimentum, dapibus elit scelerisque, facilisis libero. Nam
-            semper magna nec neque malesuada rhoncus. Pellentesque habitant
-            morbi tristique senectus et netus et malesuada fames ac turpis
-            egestas. Vestibulum commodo nunc at massa feugiat, ut efficitur
-            ante luctus. Aliquam ut sollicitudin tellus, in efficitur odio.
-            Nunc a justo molestie, viverra felis eget, sagittis arcu. Cras ac
-            tempor leo. Nulla fermentum pretium sollicitudin. Vivamus vitae
-            turpis ornare, consectetur nisl a, aliquet felis. Proin facilisis
-            convallis ex sit amet venenatis. Sed in erat ullamcorper, laoreet
-            ex sed, tempor tortor. Pellentesque feugiat non erat in luctus.
-            Proin in ultrices felis. Proin vulputate dolor ante, non mattis
-            massa auctor luctus. Quisque non felis ut urna mollis dignissim
-            sit amet a arcu.
+        
+
+        <!-- Nội dung của modal save-->
+        <div
+          class="modal fade"
+          id="saveModal"
+          tabindex="-1"
+          aria-labelledby="saveModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="saveModalLabel">
+                  Xác nhận lưu lại chỉnh sửa
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                Bạn có chắc chắn muốn lưu lại chỉnh sửa không?
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Hủy
+                </button>
+                <button
+                  data-bs-dismiss="modal"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Đồng ý
+                </button>
+              </div>
+            </div>
           </div>
-          <div
-            id="toggle-button"
-            onclick="toggleText()"
-            style="cursor: pointer"
-          >
-            Xem thêm
+        </div>
+
+        <!-- Nội dung của modal delete-->
+        <div
+          class="modal fade"
+          id="deleteModal"
+          tabindex="-1"
+          aria-labelledby="deleteModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">
+                  Xác nhận xóa bài post
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">Bạn có chắc chắn muốn xóa không?</div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Hủy
+                </button>
+                <button
+                  data-bs-dismiss="modal"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Đồng ý
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
-
-    <!-- Container để chứa nội dung modal -->
-    <div id="modal-container">
-      <!-- Modal cho icon "edit" -->
-      <div
-        class="modal fade"
-        id="editModal"
-        tabindex="-1"
-        aria-labelledby="editModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editModalLabel">
-                Xác nhận chỉnh sửa
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              Bạn có chắc chắn muốn chỉnh sửa không?
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Hủy
-              </button>
-              <button
-                data-bs-dismiss="modal"
-                type="button"
-                class="btn btn-primary"
-              >
-                Đồng ý
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Nội dung của modal save-->
-      <div
-        class="modal fade"
-        id="saveModal"
-        tabindex="-1"
-        aria-labelledby="saveModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="saveModalLabel">
-                Xác nhận lưu lại chỉnh sửa
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              Bạn có chắc chắn muốn lưu lại chỉnh sửa không?
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Hủy
-              </button>
-              <button
-                data-bs-dismiss="modal"
-                type="button"
-                class="btn btn-primary"
-              >
-                Đồng ý
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Nội dung của modal delete-->
-      <div
-        class="modal fade"
-        id="deleteModal"
-        tabindex="-1"
-        aria-labelledby="deleteModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel">
-                Xác nhận xóa bài post
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">Bạn có chắc chắn muốn xóa không?</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Hủy
-              </button>
-              <button
-                data-bs-dismiss="modal"
-                type="button"
-                class="btn btn-primary"
-              >
-                Đồng ý
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
         
 
     <!-- Bootstrap JS and Popper.js -->
@@ -700,10 +714,10 @@
       function showEditModal() {
         var modalElement = document.getElementById("editModal");
         if (modalElement) {
-          var modal = new bootstrap.Modal(modalElement);
-          modal.show();
+            var modal = new bootstrap.Modal(modalElement);
+            modal.show();
         } else {
-          console.error('Không tìm thấy phần tử với id="editModal"');
+            console.error('Không tìm thấy phần tử với id="editModal"');
         }
       }
       
@@ -727,6 +741,54 @@
         }
       }
       
+      // Lấy tất cả các phần tử img có class "report-icon"
+      const reportIcons = document.querySelectorAll('.report-icon');
+      const popup = document.getElementById('report-popup');
+      const closeButton = document.querySelector('.rp_close');
+      const saveButton = document.querySelector('.rp_save-button');
+      const reportItems = document.querySelectorAll('.rp_report-item');
+
+      // Mở popup khi nhấn vào bất kỳ icon báo cáo nào
+      reportIcons.forEach(icon => {
+          icon.addEventListener('click', function() {
+              popup.style.display = 'block';
+              const reportItems = popup.querySelectorAll('.rp_report-item');
+              reportItems.forEach(item => item.classList.remove('selected'));
+          });
+      });
+
+      // Đóng popup khi nhấn nút "X"
+      closeButton.addEventListener('click', function() {
+          popup.style.display = 'none';
+      });
+
+      // Đóng popup khi nhấn bên ngoài nội dung popup
+      window.addEventListener('click', function(event) {
+          if (event.target === popup) {
+              popup.style.display = 'none';
+          }
+      });
+
+      // Cho phép chọn các dòng báo cáo
+      reportItems.forEach(item => {
+          item.addEventListener('click', function () {
+              item.classList.toggle('selected'); // Thay đổi lớp khi click
+          });
+      });
+
+      // Lưu các lựa chọn khi nhấn nút Lưu
+      saveButton.addEventListener('click', function() {
+          const selectedItems = document.querySelectorAll('.rp_report-item.selected');
+          const selectedTexts = Array.from(selectedItems).map(item => item.textContent);
+
+          // Xử lý các lựa chọn ở đây, ví dụ:
+          console.log('Các lựa chọn đã lưu:', selectedTexts);
+
+          // Đóng popup sau khi lưu
+          popup.style.display = 'none';
+      });
+
+
     </script>    
     <script src="../../assets/js/taopost.js"></script>
 </body>
