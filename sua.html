@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Homepage</title>
+        <link rel="style" href="/index.css" >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../assets/css/userCss/homePage.css">
+</head>
+<body onload="showLocalDateTime()">
+    <div id="ContainerAll">
+      <div id="HomeContainer">
+        <!-- This is the header for all screen -->
+      <header>
+        <div class="px-3 py-2 text-bg-dark border-bottom bg-body-secondary">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                        <svg width="200" height="40" viewBox="0 0 249 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.0637498 31L11.3038 16.08L6.66375 2.44H12.9037L15.9038 12.56L22.9838 2.44H29.7038L19.0638 16.6L24.3038 31H17.8238L14.4638 20.4L6.74375 31H0.0637498ZM25.2816 40.6L31.9616 9.16H36.4416L36.1216 12.48H36.2816C36.7349 11.84 37.2549 11.24 37.8416 10.68C38.4549 10.12 39.1482 9.66666 39.9216 9.32C40.6949 8.94666 41.5482 8.76 42.4816 8.76C43.5482 8.76 44.5482 9.02667 45.4816 9.56C46.4149 10.0667 47.1749 10.9067 47.7616 12.08C48.3482 13.2267 48.6416 14.7733 48.6416 16.72C48.6416 18.1333 48.4816 19.5467 48.1616 20.96C47.8682 22.3733 47.4282 23.7067 46.8416 24.96C46.2816 26.2133 45.5882 27.32 44.7616 28.28C43.9349 29.24 42.9882 30 41.9216 30.56C40.8816 31.12 39.7482 31.4 38.5216 31.4C37.6416 31.4 36.8949 31.2667 36.2816 31C35.6682 30.7067 35.1482 30.32 34.7216 29.84C34.2949 29.3333 33.9082 28.7867 33.5616 28.2H33.4016C33.3216 29.2667 33.2149 30.24 33.0816 31.12C32.9482 32 32.7749 32.9467 32.5616 33.96L31.1616 40.6H25.2816ZM37.5216 26.64C38.1082 26.64 38.6549 26.4533 39.1616 26.08C39.6682 25.7067 40.1349 25.2 40.5616 24.56C41.0149 23.92 41.3882 23.1867 41.6816 22.36C42.0016 21.5333 42.2416 20.6533 42.4016 19.72C42.5882 18.7867 42.6816 17.8667 42.6816 16.96C42.6816 15.8133 42.4682 14.96 42.0416 14.4C41.6149 13.8133 40.9749 13.52 40.1216 13.52C39.4816 13.52 38.9082 13.68 38.4016 14C37.8949 14.32 37.4416 14.76 37.0416 15.32C36.6682 15.8533 36.3349 16.4667 36.0416 17.16C35.7482 17.8533 35.5082 18.56 35.3216 19.28C35.1616 20 35.0282 20.7067 34.9216 21.4C34.8416 22.0667 34.8016 22.6667 34.8016 23.2C34.8016 24.24 35.0416 25.08 35.5216 25.72C36.0282 26.3333 36.6949 26.64 37.5216 26.64ZM51.1106 31L57.5506 0.599998H63.4306L56.9906 31H51.1106ZM72.3856 31.4C70.759 31.4 69.3056 31.0667 68.0256 30.4C66.7723 29.7067 65.7856 28.7333 65.0656 27.48C64.3723 26.2267 64.0256 24.7333 64.0256 23C64.0256 21.4533 64.1723 19.9733 64.4656 18.56C64.7856 17.1467 65.2523 15.8533 65.8656 14.68C66.479 13.48 67.2523 12.44 68.1856 11.56C69.119 10.68 70.199 10 71.4256 9.52C72.679 9.01333 74.079 8.76 75.6256 8.76C77.3323 8.76 78.799 9.10666 80.0256 9.8C81.2523 10.4667 82.199 11.4533 82.8656 12.76C83.559 14.04 83.9056 15.5867 83.9056 17.4C83.9056 18.8667 83.759 20.2933 83.4656 21.68C83.1723 23.0667 82.719 24.3467 82.1056 25.52C81.519 26.6933 80.7723 27.72 79.8656 28.6C78.959 29.48 77.879 30.1733 76.6256 30.68C75.3723 31.16 73.959 31.4 72.3856 31.4ZM72.8656 26.6C73.5056 26.6 74.0923 26.44 74.6256 26.12C75.159 25.7733 75.639 25.3067 76.0656 24.72C76.4923 24.1333 76.839 23.4533 77.1056 22.68C77.399 21.9067 77.6123 21.0667 77.7456 20.16C77.9056 19.2533 77.9856 18.3333 77.9856 17.4C77.9856 16.6533 77.8923 16 77.7056 15.44C77.5456 14.8533 77.2523 14.4 76.8256 14.08C76.4256 13.7333 75.879 13.56 75.1856 13.56C74.4656 13.56 73.8256 13.76 73.2656 14.16C72.7056 14.56 72.2123 15.0933 71.7856 15.76C71.3856 16.4 71.039 17.1333 70.7456 17.96C70.479 18.7867 70.279 19.64 70.1456 20.52C70.0123 21.3733 69.9456 22.2 69.9456 23C69.9456 24.1733 70.1856 25.0667 70.6656 25.68C71.1456 26.2933 71.879 26.6 72.8656 26.6ZM86.3841 31L91.0241 9.16H95.5041L95.1041 13.2H95.3041C95.8907 12.2667 96.5307 11.48 97.2241 10.84C97.9174 10.1733 98.6641 9.66666 99.4641 9.32C100.291 8.94666 101.171 8.76 102.104 8.76C102.424 8.76 102.757 8.78666 103.104 8.84C103.477 8.86667 103.771 8.90667 103.984 8.96L102.704 14.64C102.491 14.56 102.211 14.4933 101.864 14.44C101.517 14.36 101.144 14.32 100.744 14.32C100.024 14.32 99.3307 14.4667 98.6641 14.76C97.9974 15.0533 97.3841 15.4933 96.8241 16.08C96.2641 16.64 95.7707 17.36 95.3441 18.24C94.9174 19.0933 94.5841 20.0933 94.3441 21.24L92.2641 31H86.3841ZM112.119 31.4C110.412 31.4 108.905 31.0933 107.599 30.48C106.319 29.8667 105.305 28.9333 104.559 27.68C103.839 26.4267 103.479 24.8533 103.479 22.96C103.479 21.12 103.732 19.36 104.239 17.68C104.772 15.9733 105.545 14.4533 106.559 13.12C107.599 11.7867 108.879 10.7333 110.399 9.96C111.919 9.16 113.679 8.76 115.679 8.76C118.132 8.76 119.959 9.32 121.159 10.44C122.385 11.56 122.999 12.9867 122.999 14.72C122.999 15.8667 122.732 16.9067 122.199 17.84C121.692 18.7733 120.919 19.5733 119.879 20.24C118.865 20.9067 117.572 21.4267 115.999 21.8C114.425 22.1467 112.572 22.32 110.439 22.32H109.439C109.412 22.48 109.399 22.6267 109.399 22.76C109.399 22.8667 109.399 22.9867 109.399 23.12C109.399 24.2933 109.732 25.2267 110.399 25.92C111.092 26.6133 112.052 26.96 113.279 26.96C114.425 26.96 115.465 26.8267 116.399 26.56C117.332 26.2933 118.439 25.8667 119.719 25.28V29.72C118.572 30.28 117.412 30.7067 116.239 31C115.065 31.2667 113.692 31.4 112.119 31.4ZM110.959 18.36C112.479 18.36 113.705 18.2 114.639 17.88C115.572 17.56 116.252 17.1333 116.679 16.6C117.132 16.04 117.359 15.4533 117.359 14.84C117.359 14.2267 117.172 13.7733 116.799 13.48C116.452 13.16 115.959 13 115.319 13C114.599 13 113.879 13.2267 113.159 13.68C112.439 14.1333 111.799 14.76 111.239 15.56C110.705 16.36 110.319 17.2933 110.079 18.36H110.959ZM124.704 31L129.344 9.16H133.824L133.424 13.2H133.624C134.211 12.2667 134.851 11.48 135.544 10.84C136.238 10.1733 136.984 9.66666 137.784 9.32C138.611 8.94666 139.491 8.76 140.424 8.76C140.744 8.76 141.078 8.78666 141.424 8.84C141.798 8.86667 142.091 8.90667 142.304 8.96L141.024 14.64C140.811 14.56 140.531 14.4933 140.184 14.44C139.838 14.36 139.464 14.32 139.064 14.32C138.344 14.32 137.651 14.4667 136.984 14.76C136.318 15.0533 135.704 15.4933 135.144 16.08C134.584 16.64 134.091 17.36 133.664 18.24C133.238 19.0933 132.904 20.0933 132.664 21.24L130.584 31H124.704ZM141.86 31L147.9 2.44H155.86C158.18 2.44 160.034 2.78667 161.42 3.48C162.834 4.17333 163.847 5.14666 164.46 6.4C165.1 7.65333 165.42 9.10667 165.42 10.76C165.42 12.4667 165.1 13.9467 164.46 15.2C163.847 16.4533 162.98 17.5067 161.86 18.36C160.74 19.1867 159.42 19.8133 157.9 20.24C156.38 20.64 154.74 20.84 152.98 20.84H149.94L147.82 31H141.86ZM153.46 15.88C154.66 15.88 155.7 15.6933 156.58 15.32C157.487 14.92 158.18 14.3467 158.66 13.6C159.167 12.8533 159.42 11.96 159.42 10.92C159.42 9.72 159.1 8.84 158.46 8.28C157.82 7.69333 156.874 7.4 155.62 7.4H152.82L151.02 15.88H153.46ZM165.954 31L172.394 0.599998H178.274L177.154 5.88C177.074 6.33333 176.954 6.84 176.794 7.4C176.661 7.93333 176.514 8.49333 176.354 9.08C176.194 9.64 176.034 10.1867 175.874 10.72C175.714 11.2267 175.568 11.68 175.434 12.08H175.594C176.128 11.4133 176.701 10.84 177.314 10.36C177.928 9.85333 178.594 9.46667 179.314 9.2C180.061 8.90667 180.861 8.76 181.714 8.76C182.968 8.76 184.008 9.02667 184.834 9.56C185.688 10.0667 186.314 10.7867 186.714 11.72C187.141 12.6533 187.354 13.76 187.354 15.04C187.354 15.52 187.314 16.0667 187.234 16.68C187.154 17.2667 187.048 17.8933 186.914 18.56L184.314 31H178.434L181.114 18.24C181.221 17.7867 181.301 17.3733 181.354 17C181.408 16.6 181.434 16.24 181.434 15.92C181.434 15.0933 181.248 14.4933 180.874 14.12C180.528 13.72 180.008 13.52 179.314 13.52C178.434 13.52 177.634 13.9067 176.914 14.68C176.194 15.4267 175.568 16.44 175.034 17.72C174.528 19 174.101 20.4133 173.754 21.96L171.834 31H165.954ZM199.775 31.4C198.068 31.4 196.562 31.0933 195.255 30.48C193.975 29.8667 192.962 28.9333 192.215 27.68C191.495 26.4267 191.135 24.8533 191.135 22.96C191.135 21.12 191.388 19.36 191.895 17.68C192.428 15.9733 193.202 14.4533 194.215 13.12C195.255 11.7867 196.535 10.7333 198.055 9.96C199.575 9.16 201.335 8.76 203.335 8.76C205.788 8.76 207.615 9.32 208.815 10.44C210.042 11.56 210.655 12.9867 210.655 14.72C210.655 15.8667 210.388 16.9067 209.855 17.84C209.348 18.7733 208.575 19.5733 207.535 20.24C206.522 20.9067 205.228 21.4267 203.655 21.8C202.082 22.1467 200.228 22.32 198.095 22.32H197.095C197.068 22.48 197.055 22.6267 197.055 22.76C197.055 22.8667 197.055 22.9867 197.055 23.12C197.055 24.2933 197.388 25.2267 198.055 25.92C198.748 26.6133 199.708 26.96 200.935 26.96C202.082 26.96 203.122 26.8267 204.055 26.56C204.988 26.2933 206.095 25.8667 207.375 25.28V29.72C206.228 30.28 205.068 30.7067 203.895 31C202.722 31.2667 201.348 31.4 199.775 31.4ZM198.615 18.36C200.135 18.36 201.362 18.2 202.295 17.88C203.228 17.56 203.908 17.1333 204.335 16.6C204.788 16.04 205.015 15.4533 205.015 14.84C205.015 14.2267 204.828 13.7733 204.455 13.48C204.108 13.16 203.615 13 202.975 13C202.255 13 201.535 13.2267 200.815 13.68C200.095 14.1333 199.455 14.76 198.895 15.56C198.362 16.36 197.975 17.2933 197.735 18.36H198.615ZM212.361 31L217.001 9.16H221.481L221.081 13.2H221.241C221.801 12.32 222.414 11.5467 223.081 10.88C223.774 10.2133 224.534 9.69333 225.361 9.32C226.187 8.94666 227.107 8.76 228.121 8.76C229.374 8.76 230.414 9.02667 231.241 9.56C232.094 10.0667 232.721 10.7867 233.121 11.72C233.547 12.6533 233.761 13.76 233.761 15.04C233.761 15.52 233.721 16.0667 233.641 16.68C233.561 17.2667 233.454 17.8933 233.321 18.56L230.721 31H224.841L227.521 18.24C227.627 17.7867 227.707 17.3733 227.761 17C227.814 16.6 227.841 16.24 227.841 15.92C227.841 15.0933 227.654 14.4933 227.281 14.12C226.934 13.72 226.414 13.52 225.721 13.52C224.841 13.52 224.041 13.9067 223.321 14.68C222.601 15.4267 221.974 16.44 221.441 17.72C220.934 19 220.507 20.4133 220.161 21.96L218.241 31H212.361ZM236.501 31L241.141 9.16H247.021L242.381 31H236.501ZM245.021 6.44C244.195 6.44 243.488 6.26667 242.901 5.92C242.341 5.54667 242.061 4.92 242.061 4.04C242.061 3.29333 242.195 2.66667 242.461 2.16C242.755 1.65333 243.168 1.26667 243.701 0.999998C244.235 0.733331 244.875 0.599998 245.621 0.599998C246.395 0.599998 247.075 0.773331 247.661 1.12C248.248 1.46667 248.541 2.08 248.541 2.96C248.541 4 248.248 4.84 247.661 5.48C247.101 6.12 246.221 6.44 245.021 6.44Z" fill="#4764FF"/>
+                        </svg>
+                    </a>
+                    <form class="w-70 me-3">
+                        <input type="search" class="form-control" placeholder="Search anything..." aria-label="Search">
+                    </form>
+                    <button type="button" class="btn btn-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                        </svg>                                             
+                    </button>
+  
+                    <div class="dropdown text-end">
+                        <button type="button" class="btn" id="avatarButton" 
+                                data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
+                                data-bs-toggle="popover" data-bs-placement="bottom"
+                                >
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEX///9UWV1PVFmBhYdKUFS1t7hDSU5ARktFS09RVlpITlJNUlc+RElESk5MUVbGx8j4+PiipKbe39+LjpBZXmKusLLu7++8vr/P0NHY2dnl5uZiZmqTlpioqqz09PR3e35scHN8gIKPkpRfZGecnqBpbXBB8wY2AAAGRElEQVR4nO2dW3uqOhBAC4RcQEWhgHdqtf//Lx5S6/bstlYDM8zQnfXQvrq+JJNkQiZPTx6Px+PxeDwezx/meRYvtkUURcV2EWf5nPoHgbIqo1DpRMzS0JLORKJVeChX1D8MhCpupBYm+IoRWjVxRf0De1K/qG/trpbqpab+kd2pTjL5Se9DMplux9mQ60ild/XOpCpaU/9cZ/aFCh/0s4Sq2FP/ZDd2Tn5nxx31j3ZgFQhHP4sIRjN7nCb348t3mMmJ+qc/RLXp0oAfzbgZQVRdTrs14EczyiW1wD3iSQ8/y6SkVviZk+wpGART1oPxVfcWDAJdUGvcpkgABIMgYau4hRFsFbfUKt+z6z8GL0iW65tMgQkGgcqodb6yhhRsFfltNoI+E/1XTEAt9Jno0b3go6QRtdLfZHBR5oJkNRTnEDP9ZzSnhCN4H7Vw6qcr2Dh6QfHZEW9g4+gFs6EWu5BhjEKL5hJsnnGasG3EZ2q1M2hNyKYR37CasG3EN2o5Sw4/2V+RObVeyyvGXHghfaXWa8FswrYRqfXaOAO1sf+ehD7WRK4HFG6E9Es33E7KoJsu8SbDM5o6Cb7AjKSWdEFs+II33Z8xL8SG2MOQfCDm2MOwHYi0yxrk2dBCPCMuZuiGM9pQU+DO95aQ9pwGPZSSB1N0Pwup4XQAQdrpAieN+DeKUnCOP+G3bUiZ+94PYkj5xdvvb8Pfb/j7I80T/rK0XZiSGqIl9K8Qp/abAQwbUsPXAVbetEnhsvu3pI8iaD9W/P074PUAeRrib4cGyNPQCuIHU3MgNiyxEzUz6q+iUc9HLfRnpNhtmFILPm1xDy5S+s+FV7jRVDP4Lgr5hJRa7wk57U2c8D5TYe6CFYt7UIgn+QxO8S05XiMq8snwDNrKjXjzewWtEbk0IdpIZDIKLUjhlEcgPbPDSGYkrC4/HeGDjTlSS/3Fuu/l2K9MmN182kEvwDWrPmppYONpyGUqvDI3kEPRGE5Xgj4AvYDI8PphyxIu2kyoP7m8QQalOKH/9PkGNYzihHFdJRBFzoLtWOwfbriOwQv5j6W97mMEmx3TLfY9ytPYAjVjKBe17d5TFX3+9yGWolsePBXMh+CVeaHcR6NRBcOV2k1WR9e9hj4yyN87UYcPVBT8035JyHoSvEEd6Md2VEYHY/SzZHcqX77rzdQL22XoA1S7Zzm7LWlm0+cdy42SC+uyUVqEnzVNKLR6KUev98Eqft1oqXUiLInWUm5e47EFz7vs82VWx3FcZ8t8DGszj8fj8Xg8nn+SeVWt1+s8z9u/VTWmhMUP7NfLujwVzVsgpkpKOZXt6lu//5dqKoK3pjiV9ShXqftVvYg2rcf7qx03TxaNCVO71ZDyGC3q1UhE19miEVKL9MuO8MedvkmFlqJZZLw3jKvyoGWSds/rmzSRmuvrLLndyv+QsHDQtK+zlMyOL5bbcApidyGcTdMtmwz4spAapbqnlgUDyXybPJgV7UKoky1td62PU/QqSvIYU+lVJ9nzOPQxjJAniq8UHZ4C6g/BY0Lrg/NTOf0I1WFIxyoa2M9iVDRYXz1NhvezhAO9tJMJ/NvNtxAz/GOqqhmiFMZtZIPcVeMOB/SwGIU5Pc4b/IvN99ENWoJgJWgizGfCGdL2qoT/Wr0rOI9CRRx66AWNcJ3mDb9+oAsCutL3/pnHELwSPoMmriqntNIwmBBwZqxAMxRQmBmY4p5hC1pMCNRR58APHcFhApi5/41bkLkSgkTUiG4rcR8BMC+WnCb6r+jeq5ucz1LteyZ9s42gN9IwMKafIMpTVbD0e/gK4AoMPqpP6p/vPPF/elR4WXCeKK6IziVe9mPooxbVdfWG+goQJF1fFEItrQNLx/oSyFW8IOlWEWw+niZsG7HLJmOA0qRwdCpyOkCJYDi6FBtGL4gIS4fyiujPHMHS4dGkUXXSLt10gPK5sDgX463HFEktwvUK42hWbBecJ32kJ37xcH48eEwLmjOOTyiMLtA4hxrkyrIYOFarHaCaPDSO1elHN1k4TxfxCA3dvkLxhgzxht6QP97QG/LHG3pD/nhDb8gfb+gN+eMNvSF/vKE35I839Ib88YbekD/e0Bvyx9VQh2NDuxlmh2hsHMZc99zj8Xg8Ho/nn+c/deyMTxGEYaMAAAAASUVORK5CYII=" 
+                                     alt="avatar" width="40" height="40" class="rounded-3"
+                                />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link text-white fw-semibold" aria-current="page" href="#">Home Page</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Thread
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item text-white" href="#">Trending threads</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-white" href="#">Search threads</a></li>
+                      </ul>
+                    </li>
+  
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          News
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li><a class="dropdown-item text-white" href="../admin/newThread.html">New thread</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item text-white" href="#">Your thread</a></li>
+                        </ul>
+                      </li>
+            </div>
+        </nav>
+  
+        <div class="py-1 border-bottom bg-secondary-subtle">
+            <div class="container ">
+                <p class="ps-2 py-1 mb-0 fw-bold">Welcome, PHENIKAA</p>
+            </div>
+        </div>  
+      </header>
+  
+    <main>
+        <div class="main_thread">
+            <div class="thread_boder container">
+                <div class="thread_box px-2 py-2">
+                    <div class="thread_box_header">
+                        <div class="th_b_h1 row">
+                            <div class="th_b_h1 col-sm-8">
+                                <div class="fs-5 fw-medium"><a href="#">Thread</a> > <a href="#">Chính thức PHENIKAA công bố điểm</a></div>
+                                <label>
+                                    <i class="bi bi-person-fill" style="font-size: 24px;"></i>
+                                    Nguyễn Văn Vinh
+                                </label>
+                                <label class="ms-3">
+                                    <svg style="width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
+                                    <label id="localDateTime"></label>
+                                </label>
+                            </div>    
+                            <div class="th_b_h2_nameUser col-sm-4">
+                                <div class="th_b_h1_right_btn" style="float: right;">
+                                    <div class="btn bg-secondary text-light fw-bold me-3 btnLike rounded-1" style="border-radius: 0;" id="newPostButton">
+                                        <i class="bi bi-feather"></i>
+                                        NewPost
+                                    </div>
+
+                                    <div id="postModal" class="modalNewPost" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span> <!-- Close button -->
+                                            <h2>Create New Post <span class="emote">😊</span> </h2>
+                                            <!-- Emoji picker -->
+                                            <div id="emojiPicker"></div>
+                                            <textarea id="postContent" placeholder="What are you thinking... ?"></textarea>
+                                            <!-- Post button -->
+                                            <button id="postButton">Post</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn bg-secondary text-light fw-bold btnLike rounded-1" style="border-radius: 0;" onclick="followedChange(event)" id="btnFollowed">
+                                        <!-- <i class="bi bi-check-lg"></i> -->
+                                        Follow
+                                    </div>
+                                </div>
+                                <div class="th_b_h2_btn d-flex btn-group my-2" role="group" style="float: right;">
+                                    <div class="btn btn-primary text-dark border border-3 border-black d-flex justify-content-center align-items-center" style="height: 30px; border-radius: 0;">
+                                        Newest
+                                    </div>
+                                    <div class="btn btn-primary text-dark border border-3 border-black d-flex justify-content-center align-items-center" style="height: 30px; border-radius: 0;">
+                                        Popular
+                                    </div>    
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="thread_box_main border border-1 border-black mb-3">
+                        <div class="thread_border_main">
+                            <div class="th_b_m1 px-2" style="background-color: #524298; color: white;">
+                                <label>2024-09-23 09:00:13</label>
+                            </div>
+                            <div class="th_b_m2 px-2">
+                                <div class="py-2">
+                                    <div class="thread_avatar">
+                                        <img style="width: 80px; height: 80px; object-fit: cover;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s" alt="Img">
+                                        <label class="thread_info ms-3">
+                                            <div class="">Admin</div>
+                                            <div class="text-primary">
+                                                sinh viên <span>K15</span>
+                                            </div>
+                                        </label>
+                                        <div class="btn bg-light text-dark" style="float: right;" id="editIcon"
+                                        >
+                                            <svg style="width: 20px; height: 20px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th_b_m3 py-2 px-2">
+                                <div class="border border-1 border-white py-2 px-2">
+                                    <p class="content" id="content1">
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
+                                    </p>
+                                    <a href="#" class="read-more" id="readMore1" style="display:none;" onclick="toggleContent(event)">Xem thêm</a>
+                                </div>
+                            </div>
+                            <div class="th_b_m5 py-5 px-2">
+                                <div class="th_b_m5_btn">
+                                    <div class="btn bg-light" id="btnLiked" onclick="likedChange(event)">
+                                        <i class="bi bi-hand-thumbs-up-fill" style="font-size: 24px;"></i>                            
+                                    </div>
+                                    Nguyễn văn B và 1,5k người khác
+                                    <!-- Nút trích dẫn (Thay id thành class) -->
+                                    <div style="float: right;" class="openPopup">
+                                        <div class="btn bg-light">
+                                            <i class="bi bi-chat-dots-fill" style="font-size: 24px;"></i>
+                                        </div>
+                                        Trích dẫn
+                                    </div>
+  
+                                    <!-- Modal (Chỉ có một modal hiển thị cho cả 2 nút) -->
+                                    <div id="postModal1" class="modalNewPost" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close1">&times;</span> <!-- Nút đóng -->
+                                            <p class="title"><strong>CHÍNH THỨC:</strong> PHENIKAA CÔNG BỐ ĐIỂM CHUẨN TRÚNG TUYỂN NĂM 2022 CÁC PHƯƠNG THỨC:</p>
+                                            <textarea id="postContent" placeholder="What are you thinking... ?"></textarea>
+                                            <!-- Nút xác nhận -->
+                                            <button id="confirm">Xác nhận</button>
+                                        </div>
+                                    </div>
+
+
+                                   
+  
+                                </div>
+                                <div class="th_b_m6_btn" style="float: right;">
+                                    <div class="btn">
+                                        <img class="report-icon" style="width: 30px; height: 30px" src="https://static6.depositphotos.com/1004657/582/i/450/depositphotos_5825158-stock-photo-warning-sign-isolated-on-white.jpg" alt="Img">
+                                    </div>
+                                </div>
+                                <!-- Popup báo cáo -->
+                                <div id="report-popup" class="rp_popup">
+                                  <div class="rp_popup-content">
+                                      <span class="rp_close">&times;</span>
+                                      <h2>Báo cáo</h2>
+                                      <div class="rp_border"></div>
+                                      <ul>
+                                          <li><strong>Báo cáo bài đăng này</strong></li> <!-- Dòng thêm vào -->
+                                          <li class="rp_report-item">Gây hiểu nhầm hoặc lừa đảo</li>
+                                          <li class="rp_report-item">Thiếu ứng xử về mặt tình dục</li>
+                                          <li class="rp_report-item">Bạo lực</li>
+                                          <li class="rp_report-item">Xúc phạm</li>
+                                          <li class="rp_report-item">Nội dung bị cấm</li>
+                                      </ul>
+                                      <button class="rp_save-button">Xác nhận</button>
+                                  </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="thread_box_main border border-1 border-black">
+                        <div class="thread_border_main">
+                            <div class="th_b_m1 px-2" style="background-color: #524298; color: white;">
+                                <label>2024-09-22 22:00:58</label>
+                            </div>
+                            <div class="th_b_m2 px-2">
+                                <div class="py-2">
+                                    <div class="thread_avatar">
+                                        <img style="width: 80px; height: 80px; object-fit: cover;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s" alt="Img">
+                                        <label class="thread_info ms-3">
+                                            <div class="">Nguyễn Văn A</div>
+                                            <div class="text-primary">
+                                                sinh viên <span>K15</span>
+                                            </div>
+                                        </label>
+                                        <div class="btn bg-light text-dark" style="float: right;">
+                                            <svg style="width: 20px; height: 20px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th_b_m3 py-2 px-2">
+                                <div class="border border-1 border-white py-2 px-2">
+                                    <p class="content" id="content2">
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
+                                        Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.Bổ ích lắm, còn được tận 2 điểm rèn luyện nữa, đi thôi mọi người ơiii.
+                                    </p>
+                                    <a href="#" class="read-more" id="readMore1" style="display:none;" onclick="toggleContent(event)">Xem thêm</a>
+                                </div>
+                            </div>
+                            
+                            <div class="th_b_m4 py-2 px-2">
+                                Go go
+                            </div>
+                            <div class="th_b_m5 py-5 px-2">
+                                <div class="th_b_m5_btn">
+                                    <div class="btn bg-light" id="btnLiked" onclick="likedChange(event)">
+                                        <i class="bi bi-hand-thumbs-up-fill" style="font-size: 24px;"></i>                            
+                                    </div>
+                                    Nguyễn văn B và 1,5k người khác
+                                    <!-- Nút trích dẫn (Thay id thành class) -->
+                                    <div style="float: right;" class="openPopup">
+                                        <div class="btn bg-light">
+                                            <i class="bi bi-chat-dots-fill" style="font-size: 24px;"></i>
+                                        </div>
+                                        Trích dẫn
+                                    </div>
+  
+                                    <!-- Modal (Chỉ có một modal hiển thị cho cả 2 nút) -->
+                                    <div id="postModal1" class="modal" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close1">&times;</span> <!-- Nút đóng -->
+                                            <p class="title"><strong>CHÍNH THỨC:</strong> PHENIKAA CÔNG BỐ ĐIỂM CHUẨN TRÚNG TUYỂN NĂM 2022 CÁC PHƯƠNG THỨC:</p>
+                                            <textarea id="postContent" placeholder="What are you thinking... ?"></textarea>
+                                            <!-- Nút xác nhận -->
+                                            <button id="confirm">Xác nhận</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="th_b_m6_btn" style="float: right;">
+                                    <div class="btn">
+                                        <img class="report-icon" style="width: 30px; height: 30px" src="https://static6.depositphotos.com/1004657/582/i/450/depositphotos_5825158-stock-photo-warning-sign-isolated-on-white.jpg" alt="Img">
+                                    </div>
+                                </div>
+                                <!-- Popup báo cáo -->
+                                <div id="report-popup" class="rp_popup">
+                                  <div class="rp_popup-content">
+                                      <span class="rp_close">&times;</span>
+                                      <h2>Báo cáo</h2>
+                                      <div class="rp_border"></div>
+                                      <ul>
+                                          <li><strong>Báo cáo bài đăng này</strong></li> <!-- Dòng thêm vào -->
+                                          <li class="rp_report-item">Gây hiểu nhầm hoặc lừa đảo</li>
+                                          <li class="rp_report-item">Thiếu ứng xử về mặt tình dục</li>
+                                          <li class="rp_report-item">Bạo lực</li>
+                                          <li class="rp_report-item">Xúc phạm</li>
+                                          <li class="rp_report-item">Nội dung bị cấm</li>
+                                      </ul>
+                                      <button class="rp_save-button">Xác nhận</button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+      </div>
+      <!-- Overlay và Popup -->
+      <div class="editoverlay" id="overlay" style="display: none"></div>
+      <div class="editpopup" id="popup" style="display: none">
+        <!-- popup admin edit -->
+        <span class="close-btn" onclick="closeForm()">✖</span>
+        <div id="codeContainerEdit" class="form">
+          <div
+            class="container overflow-hidden text-center"
+            style="height: 30%"
+          >
+            <div class="row gx-0">
+              <div class="col">
+                <div class="p-0">
+                  <div class="card-content" style="width: 100%">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DeyZNqRdLF9WiyJOo7YQW5HxbSp3F6tNQQ&s"
+                      class="img-thumbnail"
+                      alt="Avatar"
+                    />
+                    <div class="name">
+                      <p class="card-text" style="margin-bottom: 5px">
+                        Nguyen Thi Nhu Quynh
+                      </p>
+                      <p class="card-text" style="color: rgb(85, 85, 173)">
+                        Sinh viên năm 4
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="height: 100%">
+                <div class="p-0">
+                  <div class="btntickdelete">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="size-6 edit"
+                    >
+                      <path
+                        d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z"
+                      />
+                      <path
+                        d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z"
+                      />
+                    </svg>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="size-6 save"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="size-6 delete"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="editpost">
+            <div class="text" id="textbox">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              sollicitudin accumsan felis, nec luctus dui molestie eget. Vivamus
+              mattis pulvinar dapibus. Maecenas tincidunt in nibh a convallis.
+              Cras in imperdiet lacus. Cras id tempor augue. Phasellus a tempus
+              enim. Vivamus risus felis, tristique nec condimentum quis,
+              consequat at est. Donec ut ipsum turpis. Integer sapien lacus,
+              fringilla vel sem eget, lacinia tristique lacus. Integer
+              condimentum malesuada neque sit amet hendrerit. Suspendisse
+              volutpat elit non turpis imperdiet, eget fringilla ante laoreet.
+              Aliquam nec erat id elit volutpat vehicula vitae nec neque. Sed
+              tincidunt a leo ut eleifend. Aliquam nec sodales augue. Donec
+              lacinia velit at neque tincidunt aliquam. Proin in maximus risus.
+              Pellentesque turpis turpis, consequat in elit a, lobortis lacinia
+              lectus. Nunc vehicula elit ut metus hendrerit porttitor. Aliquam
+              pharetra tincidunt congue. Nullam a augue egestas, lacinia ex et,
+              molestie sem. Ut interdum volutpat nisl. Suspendisse potenti.
+              Aliquam erat volutpat. Etiam et sodales neque. Integer quis augue
+              non risus venenatis porta pellentesque nec odio. Donec sit amet
+              odio condimentum, dapibus elit scelerisque, facilisis libero. Nam
+              semper magna nec neque malesuada rhoncus. Pellentesque habitant
+              morbi tristique senectus et netus et malesuada fames ac turpis
+              egestas. Vestibulum commodo nunc at massa feugiat, ut efficitur
+              ante luctus. Aliquam ut sollicitudin tellus, in efficitur odio.
+              Nunc a justo molestie, viverra felis eget, sagittis arcu. Cras ac
+              tempor leo. Nulla fermentum pretium sollicitudin. Vivamus vitae
+              turpis ornare, consectetur nisl a, aliquet felis. Proin facilisis
+              convallis ex sit amet venenatis. Sed in erat ullamcorper, laoreet
+              ex sed, tempor tortor. Pellentesque feugiat non erat in luctus.
+              Proin in ultrices felis. Proin vulputate dolor ante, non mattis
+              massa auctor luctus. Quisque non felis ut urna mollis dignissim
+              sit amet a arcu.
+            </div>
+            <div
+              id="toggle-button"
+              onclick="toggleText()"
+              style="cursor: pointer"
+            >
+              Xem thêm
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container để chứa nội dung modal -->
+      <div id="modal-container">
+        <!-- Modal cho icon "edit" -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Xác nhận chỉnh sửa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Bạn có chắc chắn muốn chỉnh sửa không?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary">Đồng ý</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- Nội dung của modal save-->
+        <div
+          class="modal fade"
+          id="saveModal"
+          tabindex="-1"
+          aria-labelledby="saveModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="saveModalLabel">
+                  Xác nhận lưu lại chỉnh sửa
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                Bạn có chắc chắn muốn lưu lại chỉnh sửa không?
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Hủy
+                </button>
+                <button
+                  data-bs-dismiss="modal"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Đồng ý
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nội dung của modal delete-->
+        <div
+          class="modal fade"
+          id="deleteModal"
+          tabindex="-1"
+          aria-labelledby="deleteModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">
+                  Xác nhận xóa bài post
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">Bạn có chắc chắn muốn xóa không?</div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Hủy
+                </button>
+                <button
+                  data-bs-dismiss="modal"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Đồng ý
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+        
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    <!-- JS Code to create Popover -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var avatarButton = document.getElementById('avatarButton');
+            var popoverContent = `
+            <div class="popover-body" id="popover">
+                <div class="user-info">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEX///9UWV1PVFmBhYdKUFS1t7hDSU5ARktFS09RVlpITlJNUlc+RElESk5MUVbGx8j4+PiipKbe39+LjpBZXmKusLLu7++8vr/P0NHY2dnl5uZiZmqTlpioqqz09PR3e35scHN8gIKPkpRfZGecnqBpbXBB8wY2AAAGRElEQVR4nO2dW3uqOhBAC4RcQEWhgHdqtf//Lx5S6/bstlYDM8zQnfXQvrq+JJNkQiZPTx6Px+PxeDwezx/meRYvtkUURcV2EWf5nPoHgbIqo1DpRMzS0JLORKJVeChX1D8MhCpupBYm+IoRWjVxRf0De1K/qG/trpbqpab+kd2pTjL5Se9DMplux9mQ60ild/XOpCpaU/9cZ/aFCh/0s4Sq2FP/ZDd2Tn5nxx31j3ZgFQhHP4sIRjN7nCb348t3mMmJ+qc/RLXp0oAfzbgZQVRdTrs14EczyiW1wD3iSQ8/y6SkVviZk+wpGART1oPxVfcWDAJdUGvcpkgABIMgYau4hRFsFbfUKt+z6z8GL0iW65tMgQkGgcqodb6yhhRsFfltNoI+E/1XTEAt9Jno0b3go6QRtdLfZHBR5oJkNRTnEDP9ZzSnhCN4H7Vw6qcr2Dh6QfHZEW9g4+gFs6EWu5BhjEKL5hJsnnGasG3EZ2q1M2hNyKYR37CasG3EN2o5Sw4/2V+RObVeyyvGXHghfaXWa8FswrYRqfXaOAO1sf+ehD7WRK4HFG6E9Es33E7KoJsu8SbDM5o6Cb7AjKSWdEFs+II33Z8xL8SG2MOQfCDm2MOwHYi0yxrk2dBCPCMuZuiGM9pQU+DO95aQ9pwGPZSSB1N0Pwup4XQAQdrpAieN+DeKUnCOP+G3bUiZ+94PYkj5xdvvb8Pfb/j7I80T/rK0XZiSGqIl9K8Qp/abAQwbUsPXAVbetEnhsvu3pI8iaD9W/P074PUAeRrib4cGyNPQCuIHU3MgNiyxEzUz6q+iUc9HLfRnpNhtmFILPm1xDy5S+s+FV7jRVDP4Lgr5hJRa7wk57U2c8D5TYe6CFYt7UIgn+QxO8S05XiMq8snwDNrKjXjzewWtEbk0IdpIZDIKLUjhlEcgPbPDSGYkrC4/HeGDjTlSS/3Fuu/l2K9MmN182kEvwDWrPmppYONpyGUqvDI3kEPRGE5Xgj4AvYDI8PphyxIu2kyoP7m8QQalOKH/9PkGNYzihHFdJRBFzoLtWOwfbriOwQv5j6W97mMEmx3TLfY9ytPYAjVjKBe17d5TFX3+9yGWolsePBXMh+CVeaHcR6NRBcOV2k1WR9e9hj4yyN87UYcPVBT8035JyHoSvEEd6Md2VEYHY/SzZHcqX77rzdQL22XoA1S7Zzm7LWlm0+cdy42SC+uyUVqEnzVNKLR6KUev98Eqft1oqXUiLInWUm5e47EFz7vs82VWx3FcZ8t8DGszj8fj8Xg8nn+SeVWt1+s8z9u/VTWmhMUP7NfLujwVzVsgpkpKOZXt6lu//5dqKoK3pjiV9ShXqftVvYg2rcf7qx03TxaNCVO71ZDyGC3q1UhE19miEVKL9MuO8MedvkmFlqJZZLw3jKvyoGWSds/rmzSRmuvrLLndyv+QsHDQtK+zlMyOL5bbcApidyGcTdMtmwz4spAapbqnlgUDyXybPJgV7UKoky1td62PU/QqSvIYU+lVJ9nzOPQxjJAniq8UHZ4C6g/BY0Lrg/NTOf0I1WFIxyoa2M9iVDRYXz1NhvezhAO9tJMJ/NvNtxAz/GOqqhmiFMZtZIPcVeMOB/SwGIU5Pc4b/IvN99ENWoJgJWgizGfCGdL2qoT/Wr0rOI9CRRx66AWNcJ3mDb9+oAsCutL3/pnHELwSPoMmriqntNIwmBBwZqxAMxRQmBmY4p5hC1pMCNRR58APHcFhApi5/41bkLkSgkTUiG4rcR8BMC+WnCb6r+jeq5ucz1LteyZ9s42gN9IwMKafIMpTVbD0e/gK4AoMPqpP6p/vPPF/elR4WXCeKK6IziVe9mPooxbVdfWG+goQJF1fFEItrQNLx/oSyFW8IOlWEWw+niZsG7HLJmOA0qRwdCpyOkCJYDi6FBtGL4gIS4fyiujPHMHS4dGkUXXSLt10gPK5sDgX463HFEktwvUK42hWbBecJ32kJ37xcH48eEwLmjOOTyiMLtA4hxrkyrIYOFarHaCaPDSO1elHN1k4TxfxCA3dvkLxhgzxht6QP97QG/LHG3pD/nhDb8gfb+gN+eMNvSF/vKE35I839Ib88YbekD/e0Bvyx9VQh2NDuxlmh2hsHMZc99zj8Xg8Ho/nn+c/deyMTxGEYaMAAAAASUVORK5CYII=" alt="User Avatar">
+                    <div class="user-details">
+                    <strong class="fs-6">PHENIKAA</strong><br>
+                    uid: 10201534181<br>
+                    <small>Admin</small>
+                    </div>
+                </div>
+
+                <div class="popover-item odd"><i class="bi bi-person-fill mx-1"></i> Account</div>
+                <div class="popover-item"><i class="bi bi-file-earmark-post-fill mx-1"></i> Posts</div>
+                <div class="popover-item odd"><i class="bi bi-gear-fill mx-1"></i> User Management</div>
+                <div class="popover-item"><i class="bi bi-box-arrow-right mx-1"></i> Log out</div>
+                <hr class="m-0 bg-black">
+                <div class="popover-footer pb-1">
+                    Contact Support: 032232446
+                    <i class="bi bi-telephone-outbound-fill"></i>
+                </div>
+            </div>`;
+          
+            var popover = new bootstrap.Popover(avatarButton, {
+                content: popoverContent,
+                html: true,
+                trigger: 'click'
+            });
+        });
+        
+        function showLocalDateTime() {
+            const now = new Date();
+
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const localDateTime = `${hours}:${minutes} ${year}/${month}/${day}`;
+
+            const revLocalDateTime = `${hours}:${minutes} ${year}/${month}/${day}`;
+
+            document.getElementById('localDateTime').textContent = localDateTime;
+            document.getElementById('revLocalDateTime').textContent = revLocalDateTime;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const contents = document.querySelectorAll('.content');
+            const readMoreLinks = document.querySelectorAll('.read-more');
+
+            contents.forEach((content, index) => {
+                const lineHeight = parseInt(window.getComputedStyle(content).lineHeight, 10); // Lấy chiều cao của 1 dòng
+                const maxLines = 7; // Số dòng tối đa trước khi ẩn
+                const maxHeight = lineHeight * maxLines; // Chiều cao tối đa tính theo số dòng
+
+                // Kiểm tra chiều cao của đoạn văn bản
+                if (content.scrollHeight > maxHeight) {
+                    readMoreLinks[index].style.display = 'inline'; // Hiển thị nút "Xem thêm"
+                }
+
+                // Toggle nội dung khi nhấn vào nút "Xem thêm"
+                readMoreLinks[index].addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    // Kiểm tra nếu đang thu gọn thì mở rộng, và ngược lại
+                    if (content.classList.contains('expanded')) {
+                        content.classList.remove('expanded');
+                        readMoreLinks[index].innerText = 'Xem thêm';
+                    } else {
+                        content.classList.add('expanded');
+                        readMoreLinks[index].innerText = 'Thu gọn';
+                    }
+                });
+            });
+        });
+
+
+
+
+
+        function followedChange(event) {
+            if (btnFollowed.classList.contains('bg-secondary')) {
+                btnFollowed.classList.remove('bg-secondary');
+                btnFollowed.classList.add('bg-primary');
+                btnFollowed.innerHTML = '<i class="bi bi-check-lg"></i> Followed';
+            } else {
+                btnFollowed.classList.remove('bg-success');
+                btnFollowed.classList.add('bg-secondary');
+                btnFollowed.innerHTML = 'Follow';
+            }
+        }
+
+        function likedChange(event) {
+            var btnLiked = event.currentTarget; 
+            if (btnLiked.classList.contains('bg-light')) {
+                btnLiked.classList.remove('bg-light');
+                btnLiked.classList.add('bg-primary');
+                btnLiked.innerHTML = '<i class="bi bi-hand-thumbs-up-fill" style="color: white; font-size: 24px;"></i>';
+            } else {
+                btnLiked.classList.remove('bg-primary');
+                btnLiked.classList.add('bg-light');
+                btnLiked.innerHTML = '<i class="bi bi-hand-thumbs-up-fill" style = "font-size: 24px;"></i>';
+            }
+        }
+
+        // JavaScript
+      document.addEventListener("DOMContentLoaded", function () {
+        // Gọi hàm openPopup() khi người dùng ấn vào icon edit
+        document
+          .getElementById("editIcon")
+          .addEventListener("click", openPopup);
+
+        // Đóng popup
+        function closePopup() {
+          document.getElementById("overlay").style.display = "none";
+          document.getElementById("popup").style.display = "none";
+        }
+
+        // Thêm sự kiện cho nút close
+        document
+          .querySelector(".close-btn")
+          .addEventListener("click", closePopup);
+      });
+
+      // Mở popup và overlay
+      function openPopup() {
+        var overlay = document.getElementById("overlay");
+        var popup = document.getElementById("popup");
+
+        overlay.style.display = "block";
+        popup.style.display = "block";
+
+        // Đảm bảo nội dung popup không bị ẩn
+        document.getElementById("codeContainerEdit").style.display = "block";
+      }
+
+      function toggleText() {
+        var textBox = document.getElementById("textbox");
+        var button = document.getElementById("toggle-button");
+      
+        if (textBox.classList.contains("expanded")) {
+          textBox.classList.remove("expanded");
+          textBox.style.overflow = "hidden";
+          button.innerHTML = "Xem thêm";
+        } else {
+          textBox.classList.add("expanded");
+          textBox.style.overflowY = "scroll";
+          button.innerHTML = "Thu gọn";
+        }
+      }
+      
+      document.querySelector(".edit").addEventListener("click", function () {
+        showEditModal();
+      });
+      
+      document.querySelector(".save").addEventListener("click", function () {
+        showSaveModal();
+      });
+      
+      document.querySelector(".delete").addEventListener("click", function () {
+        showDeleteModal();
+      });
+      
+      function showEditModal() {
+        var modalElement = document.getElementById("editModal");
+        if (modalElement) {
+            var modal = new bootstrap.Modal(modalElement);
+            modal.show();
+        } else {
+            console.error('Không tìm thấy phần tử với id="editModal"');
+        }
+      }
+      
+      function showSaveModal() {
+        var modalElement = document.getElementById("saveModal");
+        if (modalElement) {
+          var modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        } else {
+          console.error('Không tìm thấy phần tử với id="saveModal"');
+        }
+      }
+      
+      function showDeleteModal() {
+        var modalElement = document.getElementById("deleteModal");
+        if (modalElement) {
+          var modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        } else {
+          console.error('Không tìm thấy phần tử với id="deleteModal"');
+        }
+      }
+      
+      // Lấy tất cả các phần tử img có class "report-icon"
+      const reportIcons = document.querySelectorAll('.report-icon');
+      const popup = document.getElementById('report-popup');
+      const closeButton = document.querySelector('.rp_close');
+      const saveButton = document.querySelector('.rp_save-button');
+      const reportItems = document.querySelectorAll('.rp_report-item');
+
+      // Mở popup khi nhấn vào bất kỳ icon báo cáo nào
+      reportIcons.forEach(icon => {
+          icon.addEventListener('click', function() {
+              popup.style.display = 'block';
+              const reportItems = popup.querySelectorAll('.rp_report-item');
+              reportItems.forEach(item => item.classList.remove('selected'));
+          });
+      });
+
+      // Đóng popup khi nhấn nút "X"
+      closeButton.addEventListener('click', function() {
+          popup.style.display = 'none';
+      });
+
+      // Đóng popup khi nhấn bên ngoài nội dung popup
+      window.addEventListener('click', function(event) {
+          if (event.target === popup) {
+              popup.style.display = 'none';
+          }
+      });
+
+      // Cho phép chọn các dòng báo cáo
+      reportItems.forEach(item => {
+          item.addEventListener('click', function () {
+              item.classList.toggle('selected'); // Thay đổi lớp khi click
+          });
+      });
+
+      // Lưu các lựa chọn khi nhấn nút Lưu
+      saveButton.addEventListener('click', function() {
+          const selectedItems = document.querySelectorAll('.rp_report-item.selected');
+          const selectedTexts = Array.from(selectedItems).map(item => item.textContent);
+
+          // Xử lý các lựa chọn ở đây, ví dụ:
+          console.log('Các lựa chọn đã lưu:', selectedTexts);
+
+          // Đóng popup sau khi lưu
+          popup.style.display = 'none';
+      });
+
+
+    </script>    
+    <script src="../../assets/js/taopost.js"></script>
+</body>
+</html>
