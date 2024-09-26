@@ -182,6 +182,7 @@
               if (email === storedEmail && passwordValue === storedPassword) {
                 loginSuccess.style.display = 'block';
                 loginError.style.display = 'none';
+                window.location.href = '../user/userHomePage.html';
               } else {
                 loginError.style.display = 'block';
                 loginSuccess.style.display = 'none';
