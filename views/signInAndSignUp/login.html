@@ -132,7 +132,7 @@
           <div id="loginSuccess" style="color: green; display: none;">đăng nhập thành công</div>
           <div id="loginError" style="color: red; display: none;">Email hoặc mật khẩu không chính xác</div>
           <div class="register-link">
-            <p>Don't Have An Account? <a href="#">Sign up</a></p>
+            <p>Don't Have An Account? <a href="./register.html">Sign up</a></p>
           </div>
         </form>
       </div>
@@ -182,7 +182,7 @@
               if (email === storedEmail && passwordValue === storedPassword) {
                 loginSuccess.style.display = 'block';
                 loginError.style.display = 'none';
-                window.location.href = '../user/userHomePage.html';
+                window.location.href = '../../index_onlyFE.html';
               } else {
                 loginError.style.display = 'block';
                 loginSuccess.style.display = 'none';

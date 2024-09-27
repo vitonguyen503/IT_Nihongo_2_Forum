@@ -6,6 +6,7 @@
   <title>Login Form | Dan Aleko</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
   <style>
     *{
     margin: 0;
@@ -94,8 +95,8 @@
 
     <script>
         // Mật khẩu cũ và email mẫu
-        const oldPassword = '123456';
-        const targetEmail = 'phonghoanguyethuong@gmail.com';
+        const oldPassword = 'password123';
+        const targetEmail = 'user@example.com';
 
         document.getElementById('resetPasswordForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Ngăn không cho form gửi đi ngay lập tức
@@ -117,7 +118,7 @@
                     // Giả lập gửi email (thực tế cần tích hợp API gửi email)
                     setTimeout(() => {
                         // Hiển thị thông báo thành công
-                        successMessage.innerHTML = 'New password has been sent to your email. Please click <a href="../login.html">here</a> to return to the login page.';
+                        successMessage.innerHTML = 'New password has been sent to your email. Please click <a href="./login.html">here</a> to return to the login page.';
                         console.log(`New password: ${newPassword}`); // Để kiểm tra, không nên dùng trong thực tế
                     }, 1000);
                 } else {
