@@ -1,5 +1,4 @@
 # IT_Nihongo_2_Forum
-
 ## Quy tắc push code lên github: 
 - Push vào branch của chức năng tương ứng
 - Tên file đặt theo chức năng tương ứng

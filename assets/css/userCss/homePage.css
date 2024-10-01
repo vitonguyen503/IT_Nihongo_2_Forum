@@ -1,0 +1,485 @@
+.dropdown-item {
+  background-color: #769ede;
+}
+.dropdown-item:hover {
+  color: black !important;
+  opacity: 75%;
+}
+.dropdown-menu {
+  padding: 0;
+}
+.dropdown-divider {
+  margin: 0;
+}
+.navbar {
+  background: rgb(77, 82, 91);
+  background: linear-gradient(
+    180deg,
+    rgba(77, 82, 91, 1) 0%,
+    rgba(91, 150, 245, 1) 98%
+  );
+}
+.popover-body {
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Creates a shadow outside the popover */
+  border: none; /* Optional: Removes the border */
+  border-radius: 6px; /* Optional: Adds rounded corners */
+}
+.popover-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width */
+  font-size: 16px;
+  font-weight: 450;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+.popover-item.odd {
+  background-color: #d3d8dc; /* Default background */
+}
+.popover-item:hover {
+  background-color: #989da1;
+}
+
+.popover-item img {
+  margin-right: 8px;
+}
+.popover-footer {
+  text-align: center;
+  font-size: 10px;
+  padding-top: 8px;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.user-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-right: 8px;
+  border: 1px solid black;
+}
+.user-details {
+  font-size: 12px;
+}
+.user-details small {
+  display: block;
+  font-size: 10px;
+  color: gray;
+}
+
+/* main */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.main_thread {
+  background-color: #bddafb;
+}
+
+.thread_box {
+  background-color: #bddafb;
+}
+
+.thread_box_main {
+  background-color: #d9d9d9;
+}
+
+.th_b_m3_description {
+  background-color: #f1eeee;
+}
+
+.content {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 4.5em;
+  max-height: 140px;
+}
+
+.content.expanded {
+  -webkit-line-clamp: unset;
+  max-height: none;
+}
+
+.btnLike {
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  display: inline-block;
+}
+
+.read-more {
+  cursor: pointer;
+  color: blue;
+}
+
+.btnLike i {
+  margin-right: 5px;
+}
+
+.modalNewPost {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+.modal-content h2 {
+  font-size: 24px;
+  margin: 0;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+}
+.close1 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+.close1:hover,
+.close1:focus {
+  color: black;
+  text-decoration: none;
+}
+textarea {
+  width: calc(100%);
+  height: 150px;
+  margin: 15px 0;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+#postButton {
+  background-color: #49b2cf;
+  color: white;
+  border: none;
+  margin-left: 85px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+#postButton:hover {
+  background-color: #13819f;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+button#confirm {
+  background-color: #3a9c3e;
+  color: rgb(248, 245, 245);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: 275px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+button#confirm:hover {
+  background-color: #307c34;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+.emote {
+  cursor: pointer;
+}
+.emoji {
+  font-size: 24px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.emoji:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+#emojiPicker {
+  display: none; /* Hidden by default */
+  position: absolute;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 200px; /* Ensure it does not exceed the modal width */
+  max-height: 150px; /* Limit height to fit within modal */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 10; /* Ensure it appears above other content */
+}
+
+
+/*Admin edit */
+.editpopup .form {
+  display: flex;
+  height: 80vh;
+  background-color: rgb(205, 211, 209);
+  width: 70%;
+  margin: auto;
+  margin-top: 5%;
+  flex-direction: column;
+  border: 1px solid;
+}
+.editpopup .card {
+  width: 100%;
+  height: 30%;
+  top: 0%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.editpopup .card-content {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+}
+.editpopup .btntickdelete {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 10%;
+  margin-top: 13%;
+  height: 100%;
+}
+.editpopup .size-6 {
+  width: 8%;
+  margin-left: 5%;
+}
+.editpopup .size-6.edit:hover {
+  cursor: pointer;
+  color: rgb(42, 130, 173);
+}
+.editpopup .size-6.tick:hover {
+  color: green;
+  cursor: pointer;
+}
+.editpopup .size-6.delete:hover {
+  color: brown;
+  cursor: pointer;
+}
+.editpopup .img-thumbnail {
+  width: 25%;
+  margin-right: -50px;
+}
+.editpopup .card-content .name {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.editpopup .card-text {
+  flex: 1;
+}
+.editpopup .icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.editpopup .form .editpost {
+  width: 100%;
+  height: 70%;
+  background-color: white;
+  position: relative;
+}
+.editpopup .form .editpost .text {
+  margin: 5%;
+  width: 90%;
+  line-height: 1.5em;
+  max-height: 15em;
+  overflow: hidden; /* Giới hạn nội dung trong ô */
+  white-space: normal;
+  position: relative;
+  padding-right: 80px;
+  transition: max-height 0.3s ease; /* Hiệu ứng chuyển đổi */
+  padding-right: 10px;
+}
+.editpopup .expanded {
+  max-height: 15rem; /* Tối đa chiều cao sau khi nhấn, có thanh cuộn */
+  overflow-y: scroll; /* Thanh cuộn dọc */
+}
+.editpopup .editpost #toggle-button {
+  position: absolute;
+  right: 10%;
+  bottom: 10px;
+  background-color: transparent;
+  border: none;
+  color: rgb(95, 95, 211);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
+  bottom: 10%;
+}
+.editpopup .editpost #toggle-button:hover {
+  color: brown;
+}
+.editpopup .save:hover {
+  cursor: pointer;
+  color: rgb(21, 132, 95);
+}
+.editoverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+  display: none; /* Ẩn mặc định */
+  z-index: 10; /* Để trên cùng */
+}
+.editpopup {
+  position: fixed;
+  width: 70%;
+  height: 95vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 20; /* Để trên overlay */
+  display: none; /* Ẩn mặc định */
+}
+.editpopup .form {
+  width: 100%;
+  height: 80%;
+}
+.editpopup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* report */
+/* Ẩn popup mặc định */
+
+.btn {
+  cursor: pointer; /* Đổi con trỏ khi hover */
+}
+
+/* Popup và các phần tử bên trong đã có từ trước */
+.rp_popup {
+  display: none; /* Ẩn đi ban đầu */
+  position: fixed; /* Vị trí cố định */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Căn giữa màn hình */
+  background-color: #fff; /* Nền trắng */
+  border: 2px solid #333; /* Viền đậm */
+  padding: 20px;
+  z-index: 9999; /* Đặt trên cùng để không bị các phần tử khác che khuất */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Thêm bóng cho popup */
+  border-radius: 8px; /* Bo góc cho popup */
+  width: 450px; /* Chiều rộng khung cửa sổ */
+  height: 500px; /* Chiều cao khung cửa số */
+}
+
+.rp_popup h2 {
+  margin: 0; /* Bỏ margin */
+  font-size: 28px; /* Kích thước chữ lớn hơn */
+  text-align: center; /* Căn giữa tiêu đề */
+  color: #333; /* Màu chữ tối */
+}
+
+.rp_border {
+  border-bottom: 1px solid #ddd; /* Viền mở nhạt dưới tiêu đề */
+  margin: 10px 0; /* Khoảng cách trên và dưới */
+}
+
+.rp_popup ul {
+  list-style: none; /* Bỏ dấu đầu dòng */
+  padding: 0; /* Bỏ padding */
+}
+
+.rp_popup .rp_report-item {
+  margin: 8px; /* Khoảng cách giữa các mục trong danh sách */
+  padding: 10px; /* Khoảng cách bên trong dòng */
+  font-size: 16px; /* Kích thước chữ cho các mục */
+  color: #555; /* Màu chữ cho các mục */
+  cursor: pointer; /* Đổi con trỏ khi hover */
+  transition: background-color 0.3s, border 0.3s; /* Hiệu ứng chuyển màu và viền */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng mượt mà */
+}
+
+/* Hiệu ứng khi hover và chọn dòng */
+.rp_popup .rp_report-item:hover,
+.rp_popup .rp_report-item.selected {
+  background-color: #f0f0f0; /* Nền xám khi hover hoặc đã chọn */
+  border: 1px solid #4CAF50; /* Viền khi đã chọn */
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+}
+
+/* Nút lưu */
+.rp_popup .rp_save-button {
+  background-color: #4CAF50; /* Màu xanh lá */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px; /* Bo góc cho nút */
+  cursor: pointer;
+  font-size: 16px; /* Kích thước chữ cho nút */
+  position: absolute; /* Vị trí tuyệt đối */
+  bottom: 20px; /* Cách từ dưới lên */
+  right: 20px; /* Cách từ bên phải vào */
+  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+/* Hiệu ứng khi hover nút lưu */
+.rp_popup .rp_save-button:hover {
+  background-color: #45a049; /* Màu xanh lá đậm khi hover */
+}
+
+/* Nút đóng */
+.rp_popup .rp_close {
+  position: absolute; /* Vị trí tuyệt đối */
+  top: 10px; /* Đặt cách từ trên xuống */
+  right: 10px; /* Đặt cách từ bên phải vào */
+  cursor: pointer; /* Đổi con trỏ khi hover */
+  font-size: 20px; /* Kích thước chữ cho nút đóng */
+  color: #aaa; /* Màu chữ cho nút đóng */
+  border-radius: 50%; /* Bo tròn cho nút đóng */
+}
+
+/* Hiệu ứng khi hover nút đóng */
+.rp_popup .rp_close:hover {
+  color: #000; /* Màu chữ cho nút đóng khi hover */
+}

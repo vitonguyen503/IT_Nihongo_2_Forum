@@ -1,0 +1,162 @@
+.table .col-name,
+.table .col-date,
+.table .col-role,
+.table .col-act {
+  background-color: #dee0e1;
+}
+
+.table {
+  width: 95%;
+  margin-left: 3.3%;
+  border-radius: 10px;
+}
+
+.table .col-name {
+  width: 50%;
+  padding-left: 20px;
+}
+
+.table .col-date {
+  width: 18%;
+}
+
+.table .col-role {
+  width: 18%;
+}
+
+.table .col-name-x {
+  padding-left: 3%;
+}
+
+.table th,
+td {
+  vertical-align: middle;
+}
+
+.table .bi {
+  margin-right: 18px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.table .icon-save:hover {
+  color: green;
+}
+
+.table .icon-edit:hover {
+  color: rgb(94, 94, 185);
+}
+
+.table .icon-delete:hover {
+  color: brown;
+}
+
+.dropdown-item {
+  background-color: #769ede;
+}
+
+.dropdown-item:hover {
+  color: black !important;
+  opacity: 75%;
+}
+
+.dropdown-menu {
+  padding: 0;
+}
+
+.dropdown-divider {
+  margin: 0;
+}
+
+.navbar {
+  background: rgb(77, 82, 91);
+  background: linear-gradient(
+    180deg,
+    rgba(77, 82, 91, 1) 0%,
+    rgba(91, 150, 245, 1) 98%
+  );
+}
+
+.popover-body {
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* Creates a shadow outside the popover */
+  border: none;
+  /* Optional: Removes the border */
+  border-radius: 6px;
+  /* Optional: Adds rounded corners */
+}
+
+.popover-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  /* Ensure padding is included in width */
+  font-size: 16px;
+  font-weight: 450;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.popover-item.odd {
+  background-color: #d3d8dc;
+  /* Default background */
+}
+
+.popover-item:hover {
+  background-color: #989da1;
+}
+
+.popover-item img {
+  margin-right: 8px;
+}
+
+.popover-footer {
+  text-align: center;
+  font-size: 10px;
+  padding-top: 8px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.user-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-right: 8px;
+  border: 1px solid black;
+}
+
+.user-details {
+  font-size: 12px;
+}
+
+.user-details small {
+  display: block;
+  font-size: 10px;
+  color: gray;
+}
+
+/* main */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.thread_box {
+  background-color: #bddafb;
+}
+
+.thread_box_main {
+  background-color: #d9d9d9;
+}
+
+.th_b_m3_description {
+  background-color: #f1eeee;
+}

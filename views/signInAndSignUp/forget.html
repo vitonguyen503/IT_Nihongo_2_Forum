@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../../assets/img/giaodien.PNG) ;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .wrapper{
+    width: 420px;
+    background:#fff ;
+    border: 2px solid rgba(255, 255, 255, .2);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    color: #050505;
+    border-radius: 12px;
+    padding: 30px 40px;
+  }
+  .wrapper h1{
+    font-size: 25px;
+    text-align: center;
+  }
+  .wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+  }
+  .input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid black; /* Viền đen */
+    outline: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #7a7a7a; /* Màu chữ nhạt */
+    
+    padding: 20px 45px 20px 20px;
+}
+.input-box input::placeholder{
+    color: #b0b0b0; /* Màu chữ nhạt cho placeholder */
+}
+  .wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #2b6dd1;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+    margin-top: 60px;
+  }
+  .wrapper .btn:hover{
+    background: #124188;
+  }
+  </style>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="resetPasswordForm">
+            <h1>Forgot password</h1>
+            <p style="padding-top: 20px;">Please enter your email to reset the password</p>
+            <div class="input-box">
+                <h3 style="padding-bottom: 20px;">Your email</h3>
+                <input type="text" id="email" placeholder="Enter your email" required>
+                <p id="emailError" class="error"></p>
+                <p id="successMessage" class="info"></p>
+            </div>
+            <button type="submit" class="btn">Reset Password</button>
+        </form>
+    </div>
+
+    <script>
+        // Mật khẩu cũ và email mẫu
+        const oldPassword = 'password123';
+        const targetEmail = 'user@example.com';
+
+        document.getElementById('resetPasswordForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn không cho form gửi đi ngay lập tức
+
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const successMessage = document.getElementById('successMessage');
+            const emailValue = emailInput.value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailPattern.test(emailValue)) {
+                emailError.textContent = '';
+                successMessage.textContent = '';
+
+                if (emailValue === targetEmail) {
+                    // Tạo mật khẩu mới (ví dụ: ngẫu nhiên)
+                    const newPassword = Math.random().toString(36).slice(-8);
+
+                    // Giả lập gửi email (thực tế cần tích hợp API gửi email)
+                    setTimeout(() => {
+                        // Hiển thị thông báo thành công
+                        successMessage.innerHTML = 'New password has been sent to your email. Please click <a href="./login.html">here</a> to return to the login page.';
+                        console.log(`New password: ${newPassword}`); // Để kiểm tra, không nên dùng trong thực tế
+                    }, 1000);
+                } else {
+                    emailError.textContent = 'The email address does not match our records.';
+                }
+            } else {
+                emailError.textContent = 'Please enter a valid email address.';
+            }
+        });
+    </script>
+</body>
+</html>
