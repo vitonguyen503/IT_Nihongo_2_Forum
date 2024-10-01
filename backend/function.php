@@ -1,6 +1,17 @@
 <?php 
 
 require_once '../backend/dbConnect.php';
+
+function error422($message){
+    $data = [
+        'status' => 422,
+        'message' => $message,
+    ];
+
+    header("HTTP/1.0 422 Unprocessable Entity");
+    echo json_encode($data);
+    exit();
+}
 function getThreadList(){
     global $conn;
 
@@ -78,7 +89,18 @@ function getPostList($threadID){
         p.created_at DESC; 
     ";
 
-    $query2 = "SELECT title FROM thread WHERE threadID = $threadID";
+    $query2 = "
+        SELECT 
+            t.title AS title,
+            t.created_at,
+            u.name AS creator
+        FROM 
+            thread t
+        JOIN 
+            users u ON t.userID = u.userID
+        WHERE 
+            t.threadID = $threadID;  
+        ";
 
     $query_run = mysqli_query($conn, $query);
     $query2_run = mysqli_query($conn, $query2);
@@ -86,12 +108,14 @@ function getPostList($threadID){
     if($query_run && $query2_run) {
         if(mysqli_num_rows($query2_run) > 0) {
             $posts = mysqli_fetch_all($query_run, MYSQLI_ASSOC);
-            $thread_title = mysqli_fetch_all($query2_run, MYSQLI_ASSOC);
+            $thread_info = mysqli_fetch_all($query2_run, MYSQLI_ASSOC);
 
             $data = [
                 'status' => 200,
                 'message' => 'Post lists fetched successfully',
-                'thread_title' => $thread_title,
+                'thread_title' => $thread_info[0]['title'],
+                'thread_creator' => $thread_info[0]['creator'],
+                'thread_created_at' => $thread_info[0]['created_at'],
                 'posts' => $posts
             ];
 
@@ -110,5 +134,38 @@ function getPostList($threadID){
 
         header("HTTP/1.0 500 Internal Server Error");
         return json_encode($data);
+    }
+}
+
+function storePost($postInput){
+    global $conn;
+
+    $quoted_postID = mysqli_real_escape_string($conn, $postInput['quoted_postID']);
+    $threadID = mysqli_real_escape_string($conn, $postInput['threadID']);
+    $userID = mysqli_real_escape_string($conn, $postInput['userID']);
+    $content = mysqli_real_escape_string($conn, $postInput['content']);
+
+    if(empty(trim($threadID)) || empty(trim($userID)) || empty(trim($content))){
+        return error422('Missing information!');
+    } else {
+        $query = "INSERT INTO posts (quoted_postID, threadID, userID, content) VALUES ('$quoted_postID', '$threadID', '$userID', '$content')";
+        $result = mysqli_query($conn, $query);
+
+        if($result) {
+            $data = [
+                'status' => 201,
+                'message' => 'Post Created Successfully!',
+            ];
+            header("HTTP/1.0 201 Created");
+            return json_encode($data);
+        } else {
+            $data = [
+                'status' => 500,
+                'message' => 'Internal Server Error',
+            ];
+    
+            header("HTTP/1.0 500 Internal Server Error");
+            return json_encode($data);
+        }
     }
 }
