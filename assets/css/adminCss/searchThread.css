@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+.dropdown-item {
+    background-color: #769ede;
+  }
+  .dropdown-item:hover {
+    color: black !important;
+    opacity: 75%;
+  }
+  .dropdown-menu {
+    padding: 0;
+  }
+  .dropdown-divider {
+    margin: 0;
+  }
+  .navbar {
+    background: rgb(77, 82, 91);
+    background: linear-gradient(
+      180deg,
+      rgba(77, 82, 91, 1) 0%,
+      rgba(91, 150, 245, 1) 98%
+    );
+  }
+  .popover-body {
+    padding: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Creates a shadow outside the popover */
+    border: none; /* Optional: Removes the border */
+    border-radius: 6px; /* Optional: Adds rounded corners */
+  }
+  .popover-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    font-size: 16px;
+    font-weight: 450;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+  .popover-item.odd {
+    background-color: #d3d8dc; /* Default background */
+  }
+  .popover-item:hover {
+    background-color: #989da1;
+  }
+  
+  .popover-item img {
+    margin-right: 8px;
+  }
+  .popover-footer {
+    text-align: center;
+    font-size: 10px;
+    padding-top: 8px;
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  .user-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    margin-right: 8px;
+    border: 1px solid black;
+  }
+  .user-details {
+    font-size: 12px;
+  }
+  .user-details small {
+    display: block;
+    font-size: 10px;
+    color: gray;
+  }
+
+/* main */
+
+main {
+    background-color: #cde7e8;
+    padding: 20px 0;
+    min-height: calc(100vh - 167px);
+
+}
+
+.inputSearchBox {
+    width: 700px;
+    background-color: white;
+}
+
+.inputSearchBox button {
+    background-color: #3ec0c9;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 3px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: calc(10px + 20%);
+}
+
+
+.inputSearchBox button:hover {
+    border: 1px solid white;
+}
+
+.resultSearchItem {
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.resultSearchItem label {
+  display: block;
+  text-align: center;
+}
+
+.resultSearchItem img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.resultSearchItem p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.not-found {
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+  margin-top: 20px;
+}
