@@ -149,7 +149,7 @@
                           News
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                          <li><a class="dropdown-item text-white" href="#">New posts</a></li>
+                          <li><a class="dropdown-item text-white" href="/views/admin/newThread.html">New threads</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item text-white" href="#">Your posts</a></li>
                         </ul>
@@ -245,7 +245,7 @@
                         colDiv.classList.add('col');
 
                         const link = document.createElement('a');
-                        link.href = `views/thread.html?threadID=${item.threadID}`; 
+                        link.href = `views/user/thread.html?threadID=${item.threadID}`; 
                         link.classList.add('text-decoration-none');
 
                         const img = document.createElement('img');
@@ -269,7 +269,7 @@
                     data.posts.forEach(item => {
                         const anchor = document.createElement('a');
                         anchor.className = 'text-decoration-none';
-                        anchor.href = `views/thread.html?threadID=${item.postID}?newest`;
+                        anchor.href = `views/user/thread.html?threadID=${item.thread_id}`;
 
                         const card = document.createElement('div');
                         card.className = 'card mb-3 border-primary news-card';

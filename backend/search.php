@@ -1,32 +1,27 @@
 <?php
 
-error_reporting(0);
-
 header('Access-Control-Allow-Origin:*');
 header('Content-Type: application/json');
-header('Access-Control-Allow-Method: POST');
+header('Access-Control-Allow-Method: GET');
 header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers');
 
 include 'function.php';
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-if ($requestMethod == "POST") {
-    $inputData = json_decode(file_get_contents("php://input"), true);
-
-    if (empty($inputData)) {
-        $storePost = storePost($_POST);
-        echo 1;
-        echo $storePost;
+if ($requestMethod == "GET") {
+    if (isset($_GET['title'])) {
+        $title = $_GET['title'];
+        $threadList = getThreadListByTitle($title);
+        echo $threadList;
     } else {
-        $storePost = storePost($inputData);
-        echo 2;
-        echo $storePost;
-
+        $data = [
+            'status' => 404,
+            'message' => "Not Found",
+        ];
+        header("HTTP/1.0 404 Not Found");
+        echo json_encode($data);
     }
-
-    // echo $storePost;
-
 } else {
     $data = [
         'status' => 405,

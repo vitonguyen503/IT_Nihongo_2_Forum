@@ -15,12 +15,13 @@ function error422($message){
 function getThreadList(){
     global $conn;
 
-    $query = "SELECT threadID, title, image FROM thread ORDER BY updated_at DESC LIMIT 3";
-    $query2 = "SELECT 
+    $query   = "SELECT threadID, title, image FROM thread ORDER BY updated_at DESC LIMIT 3";
+    $query2  = "SELECT 
                     p.postID, p.content,
                     u.name AS poster_name,
                     u.profile_picture AS poster_avatar,
-                    t.title AS thread_title
+                    t.title AS thread_title,
+                    t.threadID AS thread_id
                 FROM 
                     posts p
                 JOIN 
@@ -72,6 +73,7 @@ function getPostList($threadID){
         p.reaction_count,
         p.created_at,
         u.name AS poster_name,
+        u2.name AS last_reaction_user,
         u.profile_picture,
         u.year_code,
         qp.content AS quoted_content
@@ -137,6 +139,50 @@ function getPostList($threadID){
     }
 }
 
+function getThreadListByTitle($title){
+    global $conn;
+
+    $query = "
+    SELECT 
+        threadID,
+        title,
+        image
+    FROM 
+        thread
+    WHERE 
+        title LIKE '%$title%'
+    ORDER BY 
+        updated_at DESC; 
+    ";
+
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run) {
+        if(mysqli_num_rows($query_run) > 0) {
+            $threadList = mysqli_fetch_all($query_run, MYSQLI_ASSOC);
+
+            $data = [
+                'status' => 200,
+                'message' => 'Post lists fetched successfully',
+                'threadList' => $threadList,
+            ];
+
+            header("HTTP/1.0 200 Fetched Successfully");
+            return json_encode($data);
+        } else {
+            return $data = ['status' => 200, 'message' => 'No Data'];
+        }
+    } else {
+        $data = [
+            'status' => 500,
+            'message' => 'Internal Server Error',
+        ];
+
+        header("HTTP/1.0 500 Internal Server Error");
+        return json_encode($data);
+    }
+}
+
 function storePost($postInput){
     global $conn;
 
@@ -148,10 +194,11 @@ function storePost($postInput){
     if(empty(trim($threadID)) || empty(trim($userID)) || empty(trim($content))){
         return error422('Missing information!');
     } else {
-        $query = "INSERT INTO posts (quoted_postID, threadID, userID, content) VALUES ('$quoted_postID', '$threadID', '$userID', '$content')";
-        $result = mysqli_query($conn, $query);
 
-        if($result) {
+        $stmt = $conn->prepare("INSERT INTO posts (quoted_postID, threadID, poster, content) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("iiis", $quoted_postID, $threadID, $userID, $content); // "ssi" means string, string, integer
+
+        if ($stmt->execute()) {
             $data = [
                 'status' => 201,
                 'message' => 'Post Created Successfully!',
@@ -162,6 +209,123 @@ function storePost($postInput){
             $data = [
                 'status' => 500,
                 'message' => 'Internal Server Error',
+                'error' => $stmt->error
+            ];
+    
+            header("HTTP/1.0 500 Internal Server Error");
+            return json_encode($data);
+        }
+    }
+}
+
+function storeThread($threadInput){
+    global $conn;
+
+    $title = mysqli_real_escape_string($conn, $threadInput['title']);
+    $image = mysqli_real_escape_string($conn, $threadInput['image']);
+    $userID = mysqli_real_escape_string($conn, $threadInput['userID']);
+
+    if(empty(trim($title)) || empty(trim($userID)) || empty(trim($userID))){
+        return error422('Missing information!');
+    } else {
+
+        $stmt = $conn->prepare("INSERT INTO thread (userID, title, image) VALUES (?, ?, ?)");
+        $stmt->bind_param("iss", $userID, $title, $image); // "ssi" means string, string, integer
+
+        if ($stmt->execute()) {
+
+            $query = "
+                    SELECT 
+                        threadID
+                    FROM 
+                        thread
+                    WHERE 
+                        title = '$title'
+                    ";
+
+            $query_run = mysqli_query($conn, $query);
+            if(mysqli_num_rows($query_run) > 0) {
+                $threadID = mysqli_fetch_all($query_run, MYSQLI_ASSOC);
+                $data = [
+                    'status' => 201,
+                    'message' => 'Thread Created Successfully!',
+                    'threadID' => $threadID
+                ];
+    
+                header("HTTP/1.0 201 Created");
+                return json_encode($data);
+            }
+
+        } else {
+            $data = [
+                'status' => 500,
+                'message' => 'Internal Server Error',
+                'error' => $stmt->error
+            ];
+    
+            header("HTTP/1.0 500 Internal Server Error");
+            return json_encode($data);
+        }
+    }
+}
+
+function updatePost($postInput) {
+    global $conn;
+
+    $postID = mysqli_real_escape_string($conn, $postInput['postID']);
+    $content = mysqli_real_escape_string($conn, $postInput['content']);
+
+    if(empty(trim($postID))){
+        return error422('Missing postID!');
+    } else {
+
+        $stmt = $conn->prepare("UPDATE posts SET content =  ? WHERE postID = ?");
+        $stmt->bind_param("si", $content, $postID); // "ssi" means string, string, integer
+
+        if ($stmt->execute()) {
+            $data = [
+                'status' => 201,
+                'message' => 'Post Updated Successfully!',
+            ];
+            header("HTTP/1.0 201 Updated");
+            return json_encode($data);
+        } else {
+            $data = [
+                'status' => 500,
+                'message' => 'Internal Server Error',
+                'error' => $stmt->error
+            ];
+    
+            header("HTTP/1.0 500 Internal Server Error");
+            return json_encode($data);
+        }
+    }
+}
+
+function deletePost($postInput) {
+    global $conn;
+
+    $postID = mysqli_real_escape_string($conn, $postInput['postID']);
+
+    if(empty(trim($postID))){
+        return error422('Missing postID!');
+    } else {
+
+        $stmt = $conn->prepare("DELETE FROM posts WHERE postID = ?");
+        $stmt->bind_param("i", $postID); // "ssi" means string, string, integer
+
+        if ($stmt->execute()) {
+            $data = [
+                'status' => 201,
+                'message' => 'Post Deleted Successfully!',
+            ];
+            header("HTTP/1.0 201 Deleted");
+            return json_encode($data);
+        } else {
+            $data = [
+                'status' => 500,
+                'message' => 'Internal Server Error',
+                'error' => $stmt->error
             ];
     
             header("HTTP/1.0 500 Internal Server Error");
