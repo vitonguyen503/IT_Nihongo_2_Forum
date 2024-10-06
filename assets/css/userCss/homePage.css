@@ -483,3 +483,7 @@ button#confirm:hover {
 .rp_popup .rp_close:hover {
   color: #000; /* Màu chữ cho nút đóng khi hover */
 }
+
+.btnLike:hover {
+  opacity: 80%;
+}
