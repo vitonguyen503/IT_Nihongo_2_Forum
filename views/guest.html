@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Homepage</title>
+        <link rel="style" href="/index.css" >
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -83,14 +84,6 @@
         .news-card {
             background-color: #9fc6e9;
         }
-        .btn:hover {
-            border: none
-        }
-        .thread-img {
-            height: 250px;        
-            object-fit: cover;
-            object-position: top center;
-        }
     </style>
 </head>
 <body>
@@ -105,22 +98,12 @@
                         </svg>
                     </a>
                     <form class="w-70 me-3">
-                        <input type="search" class="form-control" placeholder="Search anything..." aria-label="Search" onclick="location.href='./views/admin/searchThread.html'">
+                        <input type="search" class="form-control" placeholder="Search anything..." aria-label="Search">
                     </form>
-                    <button type="button" class="btn btn-light">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                        </svg>                                             
-                    </button>
-                    <div class="dropdown text-end">
-                        <button type="button" class="btn" id="avatarButton" 
-                                data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
-                                data-bs-toggle="popover" data-bs-placement="bottom"
-                                >
-                                <img src="data:image/png;base64,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" 
-                                     alt="avatar" width="40" height="40" class="rounded-3"
-                                />
-                        </button>
+                    <div class="text-primary fw-bolder pe-2 fs-5">
+                        <a href="#">Sign up</a>
+                        /
+                        <a href="#">Sign in</a>
                     </div>
                 </div>
             </div>
@@ -148,9 +131,7 @@
                           News
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                          <li>
-                            <a class="dropdown-item text-white" href="./views/admin/newThread.html">New thread</a>
-                          </li>
+                          <li><a class="dropdown-item text-white" href="#">New posts</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item text-white" href="#">Your posts</a></li>
                         </ul>
@@ -158,12 +139,6 @@
                 </div>
             </div>
         </nav>
-
-        <div class="py-1 border-bottom bg-secondary-subtle">
-            <div class="container ">
-                <p class="ps-2 py-1 mb-0 fw-bold">Welcome, PHENIKAA</p>
-            </div>
-        </div>  
     </header>
 
     <main>
@@ -171,19 +146,9 @@
         <div class="trending-thread">
             <div class="container">
                 <h4 class="fw-bolder ps-2 py-2">Trending Threads</h4>
-                <div class="row text-center px-2 py-1" id="show-trending-threads">
+                <div class="row text-center px-2 py-1">
                     <div class="col">
-                        <a href="./views/user/userHomePage.html" alt="" class="text-decoration-none">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWaEhB8gaupPe_aRXuwZx_OM0KGa6qTEojWQ&s" 
-                                    class="card-img-top rounded-4" 
-                                    alt="..."
-                            >
-                            <div class="text-black fw-medium text-decoration-none py-2">WORKSHOP NHỮNG HIỆN THỰC MỚI ...</div>
-                        </a>
-                    </div>
-                    
-                    <div class="col">
-                        <a href="./views/user/userHomePage.html" alt="" class="text-decoration-none">
+                        <a href="#" alt="" class="text-decoration-none">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWaEhB8gaupPe_aRXuwZx_OM0KGa6qTEojWQ&s" 
                                     class="card-img-top rounded-4" 
                                     alt="..."
@@ -193,7 +158,17 @@
                     </div>
 
                     <div class="col">
-                        <a href="./views/user/userHomePage.html" alt="" class="text-decoration-none">
+                        <a href="#" alt="" class="text-decoration-none">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWaEhB8gaupPe_aRXuwZx_OM0KGa6qTEojWQ&s" 
+                                    class="card-img-top rounded-4" 
+                                    alt="..."
+                            >
+                            <div class="text-black fw-medium text-decoration-none py-2">WORKSHOP NHỮNG HIỆN THỰC MỚI ...</div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="#" alt="" class="text-decoration-none">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWaEhB8gaupPe_aRXuwZx_OM0KGa6qTEojWQ&s" 
                                     class="card-img-top rounded-4" 
                                     alt="..."
@@ -202,6 +177,7 @@
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -209,7 +185,7 @@
         <div class="news">
             <div class="container">
                 <h4 class="fw-bolder ps-2 py-2">NEWS</h4>
-                <div class="ps-2 py-2" id="new-posts">
+                <div class="ps-2 py-2">
                     <a class="text-decoration-none" href="#">
                         <div class="card mb-3 border-primary news-card">
                             <div class="row g-0">
@@ -247,105 +223,10 @@
                             </div>
                         </div>
                     </a>
+
                 </div>  
             </div>
         </div>
-    </main>
-
-    
-    <!-- JS Code to create Popover -->
-    <script src="./assets/js/header.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Use fetch to get data from the API
-            fetch('http://localhost/IT_Nihongo_2_Forum/backend/index.php')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json(); 
-                })
-                .then(data => {
-                    // Render trending threads
-                    const dataContainer = document.getElementById('show-trending-threads');
-
-                    data.threads.forEach(item => {
-                        const colDiv = document.createElement('div');
-                        colDiv.classList.add('col');
-
-                        const link = document.createElement('a');
-                        link.href = `views/thread.html?threadID=${item.threadID}`; 
-                        link.classList.add('text-decoration-none');
-
-                        const img = document.createElement('img');
-                        img.src = item.image || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARIAAAC4CAMAAAAYGZMtAAAANlBMVEXp7vG6vsHIzM/m6+7M0NO/w8bCxsnR1di7v8Li5+rDyMvl6u3h5unAxMfLz9K3u77Y3eDW2t13gQCUAAADH0lEQVR4nO3c7ZKaMBhAYTEGAwHi3v/NdhGqkBBXJYzm5Tz/OtMyeBogfB4OAAAAAAAAAAAAAAAAAAAAAAAAAL5A89MdUzs3n/5VK9jOFOm5os42StNuEOTKXD79296jdNEPktQDZVhenuPk5NL3uNGf/nXvUFvVuGZ2OW46Fzf8dyY+3nTlEKb79O97w/maxFTJF1xfk5TJl7u9IUm9wYIzT7LBmm+24M2RJECSAEkC4Zqry1EbXZ5XHoQEJfnRw4zCFZ1NuuBs+Gveudv80+k1pyhikpzuRfo57YqNR0qSy6zIqimckCSq9E/e3j9tE5JkNkjMumEiJMnJHyRFoZIsOCuzNa+DIu7hQaeq48fpfSZptGujTXaZpOkndWWsiZAk3Sv7kuHKvqsjcxchSbxpiXn0k6px4l+Uy02EJLG68PzE/l11/6vL+1ghScY/3UVvOsziLe5PpCQ51PMmsZ2rnd/5aRf2OGKSqEkTF72BWfkbmA6biEkymcG6MjZGfucj/j4nHCeCkhyaU2mM0cdL7Pi7dF/dBfsTSUl+t56qaeIz9b7Iwk1k/7gjK8lDVRtsNYvjZD9JwqlLZJzsJkm8SD/Vne599pLE6kfPorjpcWcnSYL5iG8yP5GZxHondNXfT7Xdx4nIJLac38h5okhxv6YkMYktXTFt8kyRybFYYJLhBsb95tZzRfprSurxgr9ebM3VWOB/kwfzEc/4kJe8JLebXEOT54tITaJaN84/zHV/0hd59uFYmUnsbYyY6zh5YYwITWK9mxf6pafsJSbxi7xIYBJbB2f/Lz1jLy+JWjdGJCZZ/XaOuCTl8jWz/SYJH0PaexK7foxIS3JMUERYkgSbjbQka4+/JCEJSUjSI0mPJAEOwoH5VE0n0IpKopJYWHBWeN0xQJLAZu/BZ5yEUeLrR4lZ9V5jxHGr4be58U2C9pTYOOvL8fslKsVVo6gsv3Kz9A5OOll+C+mgNvs2VLHmndqPasxW246Lvs3z7ezRbRDFxV9LyEFzTvzBrF+nTDcaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC+zj/F2S2b1UhTuQAAAABJRU5ErkJggg=='; 
-                        img.classList.add('card-img-top', 'rounded-4', 'w-100', 'thread-img');
-                        img.alt = item.title || '...'; 
-
-                        const textDiv = document.createElement('div');
-                        textDiv.classList.add('text-black', 'fw-medium', 'text-decoration-none', 'py-2');
-                        textDiv.textContent = item.title; 
-
-                        link.appendChild(img);
-                        link.appendChild(textDiv);
-
-                        colDiv.appendChild(link);
-
-                        dataContainer.appendChild(colDiv);
-                    });
-
-                    // Render new posts
-                    data.posts.forEach(item => {
-                        const anchor = document.createElement('a');
-                        anchor.className = 'text-decoration-none';
-                        anchor.href = `views/thread.html?threadID=${item.postID}?newest`;
-
-                        const card = document.createElement('div');
-                        card.className = 'card mb-3 border-primary news-card';
-
-                        const row = document.createElement('div');
-                        row.className = 'row g-0';
-
-                        const colImage = document.createElement('div');
-                        colImage.className = 'col-md-1 d-flex align-items-center';
-
-                        const img = document.createElement('img');
-                        img.src = item.poster_avatar || 'data:image/png;base64,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';
-                        img.className = 'img-fluid rounded-start p-2';
-                        img.alt = '...';
-                        img.style.maxWidth = '100px';
-
-                        const colText = document.createElement('div');
-                        colText.className = 'col-md-10 ps-4';
-
-                        const cardBody = document.createElement('div');
-                        cardBody.className = 'card-body';
-
-                        const cardTitle = document.createElement('h5');
-                        cardTitle.className = 'card-title';
-                        cardTitle.textContent = `${item.poster_name} > ${item.thread_title}`;
-
-                        const cardText = document.createElement('p');
-                        cardText.className = 'card-text';
-                        cardText.textContent = item.content;
-
-                        cardBody.appendChild(cardTitle);
-                        cardBody.appendChild(cardText);
-                        colText.appendChild(cardBody);
-                        colImage.appendChild(img);
-                        row.appendChild(colImage);
-                        row.appendChild(colText);
-                        card.appendChild(row);
-                        anchor.appendChild(card);
-
-                        document.getElementById('new-posts').appendChild(anchor);
-                    })
-
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                });
-        });
-    </script>    
+    </main>    
 </body>
 </html>

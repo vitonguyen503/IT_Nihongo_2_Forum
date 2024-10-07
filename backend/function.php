@@ -186,7 +186,7 @@ function getThreadListByTitle($title){
 function storePost($postInput){
     global $conn;
 
-    $quoted_postID = mysqli_real_escape_string($conn, $postInput['quoted_postID']);
+    $quoted_postID = mysqli_real_escape_string($conn, $postInput['quoted_post']);
     $threadID = mysqli_real_escape_string($conn, $postInput['threadID']);
     $userID = mysqli_real_escape_string($conn, $postInput['userID']);
     $content = mysqli_real_escape_string($conn, $postInput['content']);
@@ -194,10 +194,14 @@ function storePost($postInput){
     if(empty(trim($threadID)) || empty(trim($userID)) || empty(trim($content))){
         return error422('Missing information!');
     } else {
+        // Tạo câu lệnh SQL
+        $sql = "INSERT INTO posts (quoted_postID, threadID, poster, content) VALUES (?, ?, ?, ?)";
 
-        $stmt = $conn->prepare("INSERT INTO posts (quoted_postID, threadID, poster, content) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("iiis", $quoted_postID, $threadID, $userID, $content); // "ssi" means string, string, integer
+        // Chuẩn bị câu lệnh SQL
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iiis", $quoted_postID, $threadID, $userID, $content);
 
+        // Thực thi câu lệnh
         if ($stmt->execute()) {
             $data = [
                 'status' => 201,
@@ -217,6 +221,7 @@ function storePost($postInput){
         }
     }
 }
+
 
 function storeThread($threadInput){
     global $conn;

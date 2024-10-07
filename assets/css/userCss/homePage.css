@@ -125,30 +125,37 @@ a {
   margin-right: 5px;
 }
 
+
 .modalNewPost {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+  display: none; /* Ẩn modal mặc định */
+  position: fixed; /* Giữ vị trí cố định khi cuộn trang */
+  top: 50%; /* Căn giữa theo chiều dọc */
+  left: 50%; /* Căn giữa theo chiều ngang */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Dịch chuyển modal về đúng giữa màn hình */
+  z-index: 1000; /* Đảm bảo modal hiển thị lên trên các nội dung khác */
+  background-color: white; /* Màu nền cho modal */
+  padding: 20px; /* Khoảng cách bên trong modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng để nổi bật */
+  border-radius: 8px; /* Bo tròn góc */
+  max-width: 500px; /* Giới hạn chiều rộng của modal */
+  width: 100%; /* Đảm bảo modal phù hợp trên mọi thiết bị */
 }
 
 .modal-content {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  width: 80%;
+  width: 100%;
   max-width: 500px;
   text-align: center;
   position: relative;
 }
 .modal-content h2 {
   font-size: 24px;
-  margin: 0;
+  margin: auto;
 }
 .close {
   position: absolute;
@@ -160,11 +167,28 @@ a {
 }
 .close1 {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0;
+  right: 0;
   font-size: 24px;
   color: #aaa;
   cursor: pointer;
+}
+
+.quoted-post {
+  border-left: 5px solid #4764ff;
+  background-color: #f0f0f5;
+  padding: 10px;
+  font-style: italic;
+  color: #333;
+  margin-bottom: 15px;
+  max-height: 100px; /* Giới hạn chiều cao tối đa */
+  overflow: hidden; /* Ẩn phần nội dung tràn */
+  text-align: justify;
+}
+
+.quoted-post.expanded {
+  max-height: none; /* Mở rộng để hiển thị toàn bộ nội dung */
+  overflow-y: auto; /* Thêm thanh cuộn dọc nếu nội dung quá dài */
 }
 
 .close:hover,
@@ -245,8 +269,6 @@ button#confirm:hover {
   z-index: 10; /* Ensure it appears above other content */
 }
 
-
-/*Admin edit */
 .editpopup .form {
   display: flex;
   height: 80vh;
@@ -265,6 +287,11 @@ button#confirm:hover {
   justify-content: space-between;
   align-items: center;
 }
+
+.modal-backdrop {
+  display: none;
+}
+
 .editpopup .card-content {
   height: 80%;
   display: flex;
@@ -314,7 +341,7 @@ button#confirm:hover {
 }
 .editpopup .form .editpost {
   width: 100%;
-  height: 70%;
+  height: auto;
   background-color: white;
   position: relative;
 }
@@ -329,6 +356,7 @@ button#confirm:hover {
   padding-right: 80px;
   transition: max-height 0.3s ease; /* Hiệu ứng chuyển đổi */
   padding-right: 10px;
+  text-align: justify;
 }
 .editpopup .expanded {
   max-height: 15rem; /* Tối đa chiều cao sau khi nhấn, có thanh cuộn */
@@ -388,6 +416,7 @@ button#confirm:hover {
   cursor: pointer;
 }
 
+
 /* report */
 /* Ẩn popup mặc định */
 
@@ -443,14 +472,14 @@ button#confirm:hover {
 .rp_popup .rp_report-item:hover,
 .rp_popup .rp_report-item.selected {
   background-color: #f0f0f0; /* Nền xám khi hover hoặc đã chọn */
-  border: 1px solid #4CAF50; /* Viền khi đã chọn */
+  border: 1px solid #4caf50; /* Viền khi đã chọn */
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
 }
 
 /* Nút lưu */
 .rp_popup .rp_save-button {
-  background-color: #4CAF50; /* Màu xanh lá */
+  background-color: #4caf50; /* Màu xanh lá */
   color: white;
   padding: 10px 20px;
   border: none;
