@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal1 = document.getElementById("postModal1");
     const openPopupButtons  = document.querySelectorAll(".openPopup");
     const closeBtn = document.querySelector(".close");
-    const closeBtn1 = document.querySelector(".close1");
     const emoteSpan = document.querySelector(".emote");
     const emojiPicker = document.getElementById("emojiPicker");
     const postContent = document.getElementById("postContent");
 
+
+    // Open modal when "New Post" button is clicked
     newPostBtn.addEventListener('click', function() {
         modal.style.display = "flex";
     });
@@ -17,18 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.style.display = "none";
     });
 
-    closeBtn1.addEventListener('click', function() {
-        modal1.style.display = "none";
-    });
 
     openPopupButtons.forEach(button => {
         button.addEventListener('click', function() {
             modal1.style.display = "flex";  
         });
-    });
-
-    closeBtn1.addEventListener('click', function() {
-        modal1.style.display = "none";  
     });
 
     window.addEventListener('click', function(event) {
@@ -154,24 +148,6 @@ const activityEmojis = [
 ];
             
 
-// Open modal when "New Post" button is clicked
-newPostBtn.onclick = function() {
-    modal.style.display = "flex";
-}
-
-newPostBtn1.onclick = function() {
-    modal1.style.display = "flex";
-}
-
-// Close modal when the close button is clicked
-closeBtn.onclick = function() {
-    modal.style.display = "none";
-}
-
-closeBtn1.onclick = function() {
-    modal1.style.display = "none";
-}
-
 // Close modal when clicking outside of modal content
 window.onclick = function(event) {
     if (event.target === modal) {
@@ -180,20 +156,7 @@ window.onclick = function(event) {
 }
 
 // Toggle emoji picker visibility when clicking on the emote span
-emoteSpan.onclick = function(event) {
-    if (emojiPicker.style.display === "block") {
-        emojiPicker.style.display = "none";
-    } else {
-        displayEmojiList(); // Display the list of emojis
-        emojiPicker.style.display = "block";
-        // Position the emoji picker inside the modal content
-        const rect = emoteSpan.getBoundingClientRect();
-        const modalRect = document.querySelector(".modal-content").getBoundingClientRect();
-        emojiPicker.style.top = `${rect.bottom - modalRect.top}px`; // Position relative to modal content
-        emojiPicker.style.left = `${rect.left - modalRect.left}px`;
-    }
-    event.stopPropagation(); // Prevent the click event from closing the emoji picker
-}
+
 
 // Function to display emojis in the picker
 function displayEmojiList() {

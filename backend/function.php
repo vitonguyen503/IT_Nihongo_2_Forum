@@ -67,29 +67,29 @@ function getPostList($threadID){
     global $conn;
 
     $query = "
-    SELECT 
-        p.postID,
-        p.content,
-        p.reaction_count,
-        p.created_at,
-        u.name AS poster_name,
-        u2.name AS last_reaction_user,
-        u.profile_picture,
-        u.year_code,
-        qp.content AS quoted_content
-    FROM 
-        Posts p
-    JOIN 
-        Users u ON p.poster = u.userID  -- Assuming 'userID' is the primary key in Users table
-    LEFT JOIN 
-        Users u2 ON p.last_reaction_user = u2.userID  -- Use u2 to get last reaction user details
-    LEFT JOIN 
-        Posts qp ON p.quoted_postID = qp.postID
-    WHERE 
-        p.threadID = $threadID
-    ORDER BY 
-        p.created_at DESC; 
-    ";
+        SELECT 
+            p.postID,
+            p.content,
+            p.reaction_count,
+            p.created_at,
+            u.name AS poster_name,
+            u2.name AS last_reaction_user,
+            u.profile_picture,
+            u.year_code,
+            qp.content AS quoted_content
+        FROM 
+            Posts p
+        JOIN 
+            Users u ON p.poster = u.userID  -- Assuming 'userID' is the primary key in Users table
+        LEFT JOIN 
+            Users u2 ON p.last_reaction_user = u2.userID  -- Use u2 to get last reaction user details
+        LEFT JOIN 
+            Posts qp ON p.quoted_postID = qp.postID
+        WHERE 
+            p.threadID = $threadID
+        ORDER BY 
+            p.created_at DESC; 
+        ";
 
     $query2 = "
         SELECT 
@@ -163,19 +163,15 @@ function getThreadListByTitle($title){
 
             $data = [
                 'status' => 200,
-                'message' => 'Thread lists fetched successfully',
+                'message' => 'Post lists fetched successfully',
                 'threadList' => $threadList,
             ];
 
+            header("HTTP/1.0 200 Fetched Successfully");
+            return json_encode($data);
         } else {
-
-            $data = ['status' => 200, 'message' => 'No Data', 'threadList' => null];
-            
+            return $data = ['status' => 200, 'message' => 'No Data'];
         }
-        
-        header("HTTP/1.0 200 Fetched Successfully");
-        return json_encode($data);
-
     } else {
         $data = [
             'status' => 500,
@@ -190,7 +186,7 @@ function getThreadListByTitle($title){
 function storePost($postInput){
     global $conn;
 
-    $quoted_postID = mysqli_real_escape_string($conn, $postInput['quoted_postID']);
+    $quoted_postID = mysqli_real_escape_string($conn, $postInput['quoted_post']);
     $threadID = mysqli_real_escape_string($conn, $postInput['threadID']);
     $userID = mysqli_real_escape_string($conn, $postInput['userID']);
     $content = mysqli_real_escape_string($conn, $postInput['content']);
@@ -198,10 +194,14 @@ function storePost($postInput){
     if(empty(trim($threadID)) || empty(trim($userID)) || empty(trim($content))){
         return error422('Missing information!');
     } else {
+        // Tạo câu lệnh SQL
+        $sql = "INSERT INTO posts (quoted_postID, threadID, poster, content) VALUES (?, ?, ?, ?)";
 
-        $stmt = $conn->prepare("INSERT INTO posts (quoted_postID, threadID, poster, content) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("iiis", $quoted_postID, $threadID, $userID, $content); // "ssi" means string, string, integer
+        // Chuẩn bị câu lệnh SQL
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iiis", $quoted_postID, $threadID, $userID, $content);
 
+        // Thực thi câu lệnh
         if ($stmt->execute()) {
             $data = [
                 'status' => 201,
@@ -221,6 +221,7 @@ function storePost($postInput){
         }
     }
 }
+
 
 function storeThread($threadInput){
     global $conn;
