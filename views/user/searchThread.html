@@ -158,6 +158,7 @@
             height: 50px; /* Adjust based on the number of lines */
             overflow: hidden; /* Hide the overflow text */
             display: -webkit-box;
+            line-clamp: 2;
             -webkit-line-clamp: 2; /* Limit to 2 lines */
             -webkit-box-orient: vertical;
             text-overflow: ellipsis;
@@ -230,7 +231,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link text-white fw-semibold" aria-current="page"
-                            href="../../index_onlyFE.html">Home Page</a>
+                            href="../../index.html">Home Page</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button"
@@ -354,7 +355,7 @@
                         data.threadList.forEach(item => {
                             const fullTitle = item.title;
                             resultHtml += `
-                            <div class="col-sm-${data.threadList.length === 1 ? '12' : '4'} mb-4">
+                            <div class="col-sm-4 mb-4">
                                 <a href="http://127.0.0.1:5500/views/user/thread.html?threadID=${item.threadID}" style="text-decoration: none; color: inherit;">
                                     <div class="resultSearchItem">
                                         <label>

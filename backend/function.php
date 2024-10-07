@@ -163,15 +163,17 @@ function getThreadListByTitle($title){
 
             $data = [
                 'status' => 200,
-                'message' => 'Post lists fetched successfully',
+                'message' => 'Thread lists fetched successfully',
                 'threadList' => $threadList,
             ];
 
-            header("HTTP/1.0 200 Fetched Successfully");
-            return json_encode($data);
         } else {
-            return $data = ['status' => 200, 'message' => 'No Data'];
+            $data = ['status' => 200, 'message' => 'No Data', 'threadList' => null];
         }
+        
+        header("HTTP/1.0 200 Fetched Successfully");
+        return json_encode($data);
+        
     } else {
         $data = [
             'status' => 500,
